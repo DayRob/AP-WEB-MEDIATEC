@@ -24,15 +24,16 @@ class abonne {
     public function __construct(int $unId, string $unNom, string $unPrenom, string $uneAdresse, string $uneDateNaissance, string $uneAdresseMail, string $unNumeroTel)
     {
         $this->id = $unId;
-        $this->titre = $titre;
-        $this->image = $image;
-        $this->commandeEnCours = $commandeEnCours;
-        $this->typePublic = $public;
+        $this->nom = $unNom;
+        $this->prenom = $unPrenom;
+        $this->adresse = $uneAdresse;
+        $this->dateNaissance = $uneDateNaissance;
+        $this->adresseMail = $uneAdresseMail;
+        $this->numeroTelephone = $unNumeroTel;
 
     }
-
     /**
-     * Accesseur de la propriété id
+     * Accesseur de la propriété ID
      *
      * @return integer
      */
@@ -41,48 +42,55 @@ class abonne {
     }
 
     /**
-     * Accesseur de la propriété titre
+     * Accesseur de la propriété Nom
      *
      * @return string
      */
-    public function getTitre() : string {
-        return $this->titre;
+    public function getNom() : string {
+        return $this->nom;
     }
 
     /**
-     * Accesseur de la propriété image
+     * Accesseur de la propriété Prénom
      *
      * @return string
      */
-    public function getImage() : string {
-        return $this->image;
+    public function getPrenom() : string {
+        return $this->prenom;
     }
-    
+   
     /**
-     * Accesseur de la propriété commandeEnCours
+     * Accesseur de la propriété Adresse
      *
-     * @return boolean
+     * @return string
      */
-    public function getcommandeEnCours() : bool {
-        return $this->commandeEnCours;
+    public function getAdresse() : string {
+        return $this->adresse;
     }
-    
     /**
-     * Accesseur de la propriété typePublic
+     * Accesseur de la propriété Date Naissance
      *
-     * @return TypePublic
+     * @return string
      */
-    public function getTypePublic() : TypePublic {
-        return $this->typePublic;
+    public function getDateNaissance() : string {
+        return $this->dateNaissance;
+    }
+    /**
+     * Accesseur de la propriété Adresse Mail
+     *
+     * @return string
+     */
+    public function getAdresseMail() : string {
+        return $this->adresseMail;
     }
 
     /**
-     * Accesseur de la propriété lesExemplaires
+     * Accesseur de la propriété Numéro de Téléphone
      *
-     * @return array
+     * @return string
      */
-    public function getLesExemplaires() : array {
-        return $this->lesExemplaires;
+    public function getNumeroTel() : string {
+        return $this->getNumeroTel;
     }
 
     /**
@@ -94,18 +102,5 @@ class abonne {
     public function setId(int $id): void {
         $this->id = $id;
     }
-
-    /**
-     * Mutateur de la propriété lesExemplaires
-     *
-     * @param array $lesExemplaires
-     * @return void
-     */
-    public function setlesExemplaires(array $lesExemplaires): void {
-        $this->lesExemplaires = $lesExemplaires;
-    }
-
-
-
 }
 ?>

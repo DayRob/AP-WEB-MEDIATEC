@@ -10,7 +10,17 @@ class abonne {
     private string $numeroTelephone;
     
     
-    
+    /**
+     * Undocumented function
+     *
+     * @param integer $unId
+     * @param string $unNom
+     * @param string $unPrenom
+     * @param string $uneAdresse
+     * @param string $uneDateNaissance
+     * @param string $uneAdresseMail
+     * @param string $unNumeroTel
+     */
     public function __construct(int $unId, string $unNom, string $unPrenom, string $uneAdresse, string $uneDateNaissance, string $uneAdresseMail, string $unNumeroTel)
     {
         $this->id = $unId;

@@ -9,7 +9,7 @@ class Document {
     private $lesExemplaires ;
     
     /**
-     * construteur de la classe Document
+     * Undocumented function
      *
      * @param integer $id
      * @param string $titre

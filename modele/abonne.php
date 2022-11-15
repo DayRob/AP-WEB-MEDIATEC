@@ -1,25 +1,29 @@
 <?php
 
-class Document {
+class abonne {
     private $id;
-    private $titre; 
-    private $image;
-    private $commandeEnCours; 
-    private $typePublic;
-    private $lesExemplaires ;
+    private string $nom; 
+    private string $prenom;
+    private string $adresse; 
+    private string $dateNaissance;
+    private string $adresseMail;
+    private string $numeroTelephone;
+    
     
     /**
      * Undocumented function
      *
-     * @param integer $id
-     * @param string $titre
-     * @param string $image
-     * @param boolean $commandeEnCours
-     * @param TypePublic $public
+     * @param integer $unId
+     * @param string $unNom
+     * @param string $unPrenom
+     * @param string $uneAdresse
+     * @param string $uneDateNaissance
+     * @param string $uneAdresseMail
+     * @param string $unNumeroTel
      */
-    public function __construct(int $id, string $titre, string $image, bool $commandeEnCours, TypePublic $public)
+    public function __construct(int $unId, string $unNom, string $unPrenom, string $uneAdresse, string $uneDateNaissance, string $uneAdresseMail, string $unNumeroTel)
     {
-        $this->id = $id;
+        $this->id = $unId;
         $this->titre = $titre;
         $this->image = $image;
         $this->commandeEnCours = $commandeEnCours;

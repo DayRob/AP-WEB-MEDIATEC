@@ -9,6 +9,8 @@ function controleurPrincipal($action) {
     $lesActions["accueil"] = $lesActions["rechercheSimple"] ;
     $lesActions["defaut"] = $lesActions["accueil"];
 
+    $lesActions["connexion"] = "c_connexion.php";
+
     if (array_key_exists($action, $lesActions)) {
         return $lesActions[$action];
     } else {
@@ -34,6 +36,11 @@ function chargerModeles($racine){
     require_once("$racine/modele/RevueManager.php");
     require_once("$racine/modele/TypePublic.php");
     require_once("$racine/modele/TypePublicManager.php");
+    require_once("$racine/modele/abonne.php");
+    require_once("$racine/modele/abonneManager.php");
+    require_once("$racine/modele/TypeAbonement.php");
+    require_once("$racine/modele/typeAbonementManager.php");
+    require_once("$racine/modele/authentificationManager.php");
 }
 ?>
 

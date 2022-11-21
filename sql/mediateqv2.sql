@@ -346,6 +346,8 @@ CREATE TABLE Abonne
 	 prenom  varchar (50),
 	 adresse  varchar(50),
 	 dateNaissance varchar(50),
+   adresseEmail varchar(50),
+   numeroTel varchar(50),
 	 idTypeAbonnement int(7),
 	 CONSTRAINT pk_Abonne PRIMARY KEY (id)
 	 ) ENGINE=InnoDB;

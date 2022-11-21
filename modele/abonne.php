@@ -8,6 +8,8 @@ class abonne {
     private string $dateNaissance;
     private string $adresseMail;
     private string $numeroTelephone;
+    private string $mdp;
+    private typeAbonnement $typeAbonnement;
     
     
     /**
@@ -21,7 +23,7 @@ class abonne {
      * @param string $uneAdresseMail
      * @param string $unNumeroTel
      */
-    public function __construct(int $unId, string $unNom, string $unPrenom, string $uneAdresse, string $uneDateNaissance, string $uneAdresseMail, string $unNumeroTel)
+    public function __construct(int $unId, string $unNom, string $unPrenom, string $uneAdresse, string $uneDateNaissance, string $uneAdresseMail, string $unNumeroTel,string $unMdp, typeAbonnement $typeAbo )
     {
         $this->id = $unId;
         $this->nom = $unNom;
@@ -30,6 +32,8 @@ class abonne {
         $this->dateNaissance = $uneDateNaissance;
         $this->adresseMail = $uneAdresseMail;
         $this->numeroTelephone = $unNumeroTel;
+        $this->mdp=$unMdp;
+        $this->typeAbonnement=$typeAbo;
 
     }
     /**
@@ -90,17 +94,21 @@ class abonne {
      * @return string
      */
     public function getNumeroTel() : string {
-        return $this->getNumeroTel;
+        return $this->numeroTelephone;
     }
 
     /**
-     * Mutateur de la propriété id
+     * retourne un type d'abonnement
      *
-     * @param integer $id
-     * @return void
+     * @return typeAbonnement
      */
-    public function setId(int $id): void {
-        $this->id = $id;
+    public function getTypeAbonnemt():typeAbonnement{
+        return $this->typeAbonnement;
     }
+
+    public function getMdp():string{
+        return $this->mdp;
+    }
+
 }
 ?>

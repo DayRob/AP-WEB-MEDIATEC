@@ -16,6 +16,7 @@ class authentificationManager extends Manager
             $_SESSION["mdp"] = $leAbonne->getMdp();
         }
     }
+
    public function isLoggedOn():bool
     {
         if (!isset($_SESSION)) {
@@ -37,11 +38,26 @@ class authentificationManager extends Manager
     }
 
 
+    public function connecter():abonne
+    {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+
+        if (isset($_SESSION["mail"])) {
+            $abonneManger = new abonneManager();
+            $leAbonne = $abonneManger->getUtilisateurByMail($_SESSION["mail"]); 
+        }
+        return $leAbonne ;
+
+    }
+
    public function logout():void
     {
         if (!isset($_SESSION)) {
             session_start();
         }
+        
         unset($_SESSION["mail"]);
         unset($_SESSION["mdp"]);
     }

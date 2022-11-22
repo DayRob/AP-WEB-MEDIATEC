@@ -8,8 +8,9 @@ function controleurPrincipal($action) {
 
     $lesActions["accueil"] = $lesActions["rechercheSimple"] ;
     $lesActions["defaut"] = $lesActions["accueil"];
-
+    $lesActions["deconnexion"]="c_deconnexion.php";
     $lesActions["connexion"] = "c_connexion.php";
+    
 
     if (array_key_exists($action, $lesActions)) {
         return $lesActions[$action];

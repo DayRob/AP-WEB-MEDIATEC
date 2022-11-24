@@ -14,7 +14,7 @@ class abonneManager extends Manager
             $lesAbonnes = array();
             foreach ($r1 as $unABonnee) {
 
-                $lesAbonnes[$unABonnee['id']] = new abonne($unABonnee['id'], $unABonnee['nom'], $unABonnee['prenom'], $unABonnee['adresse'], $unABonnee['dateNaissance'], $unABonnee['adresseEmail'], $unABonnee['numeroTel'],$unABonnee['mdp'], $lesTypesAbonnement[$unABonnee['idTypeAbonnement']]);
+                $lesAbonnes[$unABonnee['id']] = new abonne($unABonnee['id'], $unABonnee['nom'], $unABonnee['prenom'], $unABonnee['adresse'], $unABonnee['dateNaissance'], $unABonnee['adresseEmail'], $unABonnee['numeroTel'],$unABonnee['dateAbonnement'],$unABonnee['mdp'], $lesTypesAbonnement[$unABonnee['idTypeAbonnement']]);
             }
             return $lesAbonnes;
         } 
@@ -34,7 +34,7 @@ class abonneManager extends Manager
             $q->execute();
             $unABonnee = $q->fetch(PDO::FETCH_ASSOC);
 
-            $abonne = new abonne($unABonnee['id'], $unABonnee['nom'], $unABonnee['prenom'], $unABonnee['adresse'], $unABonnee['dateNaissance'], $unABonnee['adresseEmail'], $unABonnee['numeroTel'],$unABonnee['mdp'], $lesTypesAbonnement[$unABonnee['idTypeAbonnement']]);
+            $abonne = new abonne($unABonnee['id'], $unABonnee['nom'], $unABonnee['prenom'], $unABonnee['adresse'], $unABonnee['dateNaissance'], $unABonnee['adresseEmail'], $unABonnee['numeroTel'],$unABonnee['dateAbonnement'],$unABonnee['mdp'], $lesTypesAbonnement[$unABonnee['idTypeAbonnement']]);
 
             return $abonne;
         } catch (PDOException $e) {

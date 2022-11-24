@@ -54,3 +54,30 @@ div.img-square-wrapper>img{
   display: flex;
   flex: 1 1 auto;
 }
+
+.ui-w-100 {
+  width: 100px !important;
+  height: auto;
+}
+
+.card {
+  background-clip: padding-box;
+  box-shadow: 0 1px 4px rgba(24,28,33,0.012);
+}
+
+.user-view-table td:first-child {
+  width: 9rem;
+}
+.user-view-table td {
+  padding-right: 0;
+  padding-left: 0;
+  border: 0;
+}
+
+.text-light {
+  color: #babbbc !important;
+}
+
+.card .row-bordered>[class*=" col-"]::after {
+  border-color: rgba(24,28,33,0.075);
+}

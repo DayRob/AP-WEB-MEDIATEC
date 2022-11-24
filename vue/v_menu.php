@@ -37,12 +37,14 @@
 
             <?php } else { ?>
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <?php $unAbonne= $connexion->connecter();
-                      $prenom = $unAbonne->getPrenom();
-                      echo("$prenom"); ?>
+                <?php $unAbonne = $connexion->infoAbonne();
+                $prenom = $unAbonne->getPrenom();
+                echo ("$prenom"); ?>
               </a>
-              <a class="dropdown-item" href="./?action=connexion">Mon dossier</a>
+
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="./?action=dossierAbonne">Mon dossier</a>
+                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Mes prêts en cours</a>
                 <a class="dropdown-item" href="#">Mes réservations</a>
                 <a class="dropdown-item" href="#">Mes frais</a>

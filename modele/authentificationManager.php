@@ -38,7 +38,7 @@ class authentificationManager extends Manager
     }
 
 
-    public function connecter():abonne
+    public function infoAbonne():abonne
     {
         if (!isset($_SESSION)) {
             session_start();
@@ -48,7 +48,7 @@ class authentificationManager extends Manager
             $abonneManger = new abonneManager();
             $leAbonne = $abonneManger->getUtilisateurByMail($_SESSION["mail"]); 
         }
-        return $leAbonne ;
+        return $leAbonne;
 
     }
 

@@ -1,16 +1,35 @@
 <?php
-function controleurPrincipal($action) {
-    $lesActions = array();
-    $lesActions["rechercheSimple"] = "c_rechercheSimple.php";
-    $lesActions["rechercheAvancee"] = "c_rechercheAvancee.php";
-    $lesActions["nouveautes"] = "c_nouveautes.php";
-    $lesActions["faq"] = "c_faq.php";
 
-    $lesActions["accueil"] = $lesActions["rechercheSimple"] ;
-    $lesActions["defaut"] = $lesActions["accueil"];
-    $lesActions["deconnexion"]="c_deconnexion.php";
-    $lesActions["connexion"] = "c_connexion.php";
-    $lesActions["dossierAbonne"] = "c_dossierAbonne.php";
+
+
+
+function controleurPrincipal($action)
+{
+    $connexion = new authentificationManager();
+    $lesActions = array();
+    if ($connexion->isLoggedOn()) {
+        $lesActions["dossierAbonne"] = "c_dossierAbonne.php";
+        $lesActions["ModifierMdp"] = $lesActions["dossierAbonne"];
+        $lesActions["deconnexion"] = "c_deconnexion.php";
+        $lesActions["rechercheSimple"] = "c_rechercheSimple.php";
+        $lesActions["rechercheAvancee"] = "c_rechercheAvancee.php";
+        $lesActions["nouveautes"] = "c_nouveautes.php";
+        $lesActions["faq"] = "c_faq.php";
+        $lesActions["accueil"] = $lesActions["rechercheSimple"];
+        $lesActions["defaut"] = $lesActions["accueil"];
+    } else {
+        $lesActions["rechercheSimple"] = "c_rechercheSimple.php";
+        $lesActions["rechercheAvancee"] = "c_rechercheAvancee.php";
+        $lesActions["nouveautes"] = "c_nouveautes.php";
+        $lesActions["faq"] = "c_faq.php";
+
+        $lesActions["accueil"] = $lesActions["rechercheSimple"];
+        $lesActions["defaut"] = $lesActions["accueil"];
+
+        $lesActions["connexion"] = "c_connexion.php";
+    }
+
+
 
     if (array_key_exists($action, $lesActions)) {
         return $lesActions[$action];
@@ -20,7 +39,8 @@ function controleurPrincipal($action) {
 }
 
 
-function chargerModeles($racine){
+function chargerModeles($racine)
+{
     require_once("$racine/modele/Manager.php");
     require_once("$racine/modele/Document.php");
     require_once("$racine/modele/Livre.php");
@@ -43,5 +63,3 @@ function chargerModeles($racine){
     require_once("$racine/modele/typeAbonementManager.php");
     require_once("$racine/modele/authentificationManager.php");
 }
-?>
-

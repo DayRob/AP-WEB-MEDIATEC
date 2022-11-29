@@ -110,6 +110,11 @@ class abonne {
     }
 
 
+    /**
+     * Undocumented function
+     *
+     * @return string
+     */
     public function getDateExpriation():string
     {
         return $this->dateExpiration;
@@ -117,9 +122,16 @@ class abonne {
 
 
 
+    /**
+     * Undocumented function
+     *
+     * @return string
+     */
     public function getMdp():string{
         return $this->mdp;
     }
+
+   
 
 }
 ?>

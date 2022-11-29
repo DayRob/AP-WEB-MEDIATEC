@@ -13,7 +13,7 @@ if (isset($_POST["mail"]) && isset($_POST["mdp"])){
 }
 
 if ($connexion->isLoggedOn()){ 
-    include "$racine/controleur/c_rechercheSimple.php";   
+    include "$racine/controleur/c_dossierAbonne.php";   
 }
 else{ // l'utilisateur n'est pas connecté, on affiche le formulaire de connexion
     // appel du script de vue 

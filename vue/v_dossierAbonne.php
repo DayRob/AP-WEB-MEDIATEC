@@ -8,22 +8,33 @@
                             <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                             <div class="mt-3">
                                 <!-- permet d'affichier le nom et le prenom de user connecter -->
-                                <h4><?php echo"$prenom $nom";   ?></h4>
-                                <p class="text-secondary mb-1">numéro :<?php echo" $id";   ?></p>
-                                <p class="text-muted font-size-sm">Expire le : <?php echo" $dateExpriation"; ?></p>
+                                <h4><?php echo "$prenom $nom";   ?></h4>
+                                <p class="text-secondary mb-1">numéro :<?php echo " $id";   ?></p>
+                                <p class="text-muted font-size-sm">Expire le : <?php echo " $dateExpriation"; ?></p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="card mt-3">
                     <ul class="list-group list-group-flush">
+                        <img src="images/icon/inconWaring.png" width="24" height="24" class="rounded mx-auto d-block">
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                                </svg>Website</h6>
-                            <span class="text-secondary">https://bootdey.com</span>
+                            <a class="mb-0" href="./?action=faq">comment signaler perte de ma carte </a>
+                            <a class="mb-0" href="./?action=faq"> comment renouveler mon abonnement </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card mt-3">
+                    <ul class="list-group list-group-flush">
+                        <img src="images/icon/person-fill.svg" width="24" height="24" class="rounded mx-auto d-block">
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <a class="mb-0" href="#ModalModifMdp" data-toggle="modal" data-target="#ModalModifMdp">
+                                Modifier mot de passe
+                            </a>
+                            <a class="mb-0" href="#ModalModifInfo" data-toggle="modal" data-target="#ModalModifInfo">
+                                Modifier mes renseignements personnels
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -36,7 +47,7 @@
                                 <h6 class="mb-0">Nom Prenom :</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                            <?php echo"$nom $prenom";?>
+                                <?php echo "$nom $prenom"; ?>
                             </div>
                         </div>
                         <hr>
@@ -45,7 +56,7 @@
                                 <h6 class="mb-0">Address :</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                            <?php echo"$adresse";?>
+                                <?php echo "$adresse"; ?>
                             </div>
                         </div>
                         <hr>
@@ -54,7 +65,7 @@
                                 <h6 class="mb-0">Date de Naissance:</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                            <?php echo"$dateNaissance";?>
+                                <?php echo "$dateNaissance"; ?>
                             </div>
                         </div>
                         <hr>
@@ -63,7 +74,7 @@
                                 <h6 class="mb-0">Adresse Email :</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                            <?php echo"$adresseEmail";?>
+                                <?php echo "$adresseEmail"; ?>
                             </div>
                         </div>
                         <hr>
@@ -72,7 +83,7 @@
                                 <h6 class="mb-0">Numero de téléphone :</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <?php echo"$numeroTelephone" ?>
+                                <?php echo "$numeroTelephone" ?>
                             </div>
                         </div>
                         <hr>
@@ -81,13 +92,7 @@
                                 <h6 class="mb-0">type D'abonnement:</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <?php echo"$libelleTypeAbonnement" ?>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                                <?php echo "$libelleTypeAbonnement" ?>
                             </div>
                         </div>
                     </div>
@@ -96,66 +101,20 @@
                     <div class="col-sm-6 mb-3">
                         <div class="card h-100">
                             <div class="card-body">
-                                <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                                <small>Web Design</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>Website Markup</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>One Page</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>Mobile Template</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>Backend API</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                                <h6 class="d-flex align-items-center mb-3">Emprunts en cours : </h6>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6 mb-3">
                         <div class="card h-100">
                             <div class="card-body">
-                                <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                                <small>Web Design</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>Website Markup</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>One Page</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>Mobile Template</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>Backend API</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                                <h6 class="d-flex align-items-center mb-3">Reservation : </h6>
                             </div>
                         </div>
                     </div>
                 </div>
 
-
-
             </div>
         </div>
-
     </div>
-</div>
-
-
 </div>

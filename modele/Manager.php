@@ -2,6 +2,7 @@
 
 class Manager 
 {
+    
     /**
      * Etablit la connexion au serveur de base de données
      *
@@ -11,7 +12,7 @@ class Manager
     {
         $login = "root";
         $mdp = "";
-        $bd = "mediateq";
+        $bd = "mediateq-web";
         $serveur = "localhost";
 
         try

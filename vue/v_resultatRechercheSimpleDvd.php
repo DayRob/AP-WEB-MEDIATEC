@@ -41,7 +41,6 @@
                         <small class="text-muted"> 
                             <?= $txtExemplaires . " - " . $txtRayons ?>
                         </small>
-                        <button type="submit" name="recherche" class="btn btn-primary col-md-12" style="width: 200px; background-color: black; border-color: black;"><span class="glyphicon glyphicon-floppy-disk"></span> Réserver</a>
                     </div>
                 </div>
             </div>

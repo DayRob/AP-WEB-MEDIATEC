@@ -2,6 +2,7 @@
 
 class Manager 
 {
+    
     /**
      * Etablit la connexion au serveur de base de données
      *

@@ -8,6 +8,10 @@ class abonne {
     private string $dateNaissance;
     private string $adresseMail;
     private string $numeroTelephone;
+    private string $dateExpiration;
+    private string $mdp;
+    
+    private typeAbonnement $typeAbonnement;
     
     
     /**
@@ -21,18 +25,22 @@ class abonne {
      * @param string $uneAdresseMail
      * @param string $unNumeroTel
      */
-    public function __construct(int $unId, string $unNom, string $unPrenom, string $uneAdresse, string $uneDateNaissance, string $uneAdresseMail, string $unNumeroTel)
+    public function __construct(int $unId, string $unNom, string $unPrenom, string $uneAdresse, string $uneDateNaissance, string $uneAdresseMail, string $unNumeroTel,string $uneDateExpiration,string $unMdp, typeAbonnement $typeAbo )
     {
         $this->id = $unId;
-        $this->titre = $titre;
-        $this->image = $image;
-        $this->commandeEnCours = $commandeEnCours;
-        $this->typePublic = $public;
+        $this->nom = $unNom;
+        $this->prenom = $unPrenom;
+        $this->adresse = $uneAdresse;
+        $this->dateNaissance = $uneDateNaissance;
+        $this->adresseMail = $uneAdresseMail;
+        $this->numeroTelephone = $unNumeroTel;
+        $this->mdp=$unMdp;
+        $this->typeAbonnement=$typeAbo;
+        $this->dateExpiration=$uneDateExpiration;
 
     }
-
     /**
-     * Accesseur de la propriété id
+     * Accesseur de la propriété ID
      *
      * @return integer
      */
@@ -41,71 +49,89 @@ class abonne {
     }
 
     /**
-     * Accesseur de la propriété titre
+     * Accesseur de la propriété Nom
      *
      * @return string
      */
-    public function getTitre() : string {
-        return $this->titre;
+    public function getNom() : string {
+        return $this->nom;
     }
 
     /**
-     * Accesseur de la propriété image
+     * Accesseur de la propriété Prénom
      *
      * @return string
      */
-    public function getImage() : string {
-        return $this->image;
+    public function getPrenom() : string {
+        return $this->prenom;
     }
-    
+   
     /**
-     * Accesseur de la propriété commandeEnCours
+     * Accesseur de la propriété Adresse
      *
-     * @return boolean
+     * @return string
      */
-    public function getcommandeEnCours() : bool {
-        return $this->commandeEnCours;
+    public function getAdresse() : string {
+        return $this->adresse;
     }
-    
     /**
-     * Accesseur de la propriété typePublic
+     * Accesseur de la propriété Date Naissance
      *
-     * @return TypePublic
+     * @return string
      */
-    public function getTypePublic() : TypePublic {
-        return $this->typePublic;
+    public function getDateNaissance() : string {
+        return $this->dateNaissance;
+    }
+    /**
+     * Accesseur de la propriété Adresse Mail
+     *
+     * @return string
+     */
+    public function getAdresseMail() : string {
+        return $this->adresseMail;
     }
 
     /**
-     * Accesseur de la propriété lesExemplaires
+     * Accesseur de la propriété Numéro de Téléphone
      *
-     * @return array
+     * @return string
      */
-    public function getLesExemplaires() : array {
-        return $this->lesExemplaires;
+    public function getNumeroTel() : string {
+        return $this->numeroTelephone;
     }
 
     /**
-     * Mutateur de la propriété id
+     * retourne un type d'abonnement
      *
-     * @param integer $id
-     * @return void
+     * @return typeAbonnement
      */
-    public function setId(int $id): void {
-        $this->id = $id;
+    public function getTypeAbonnemt():typeAbonnement{
+        return $this->typeAbonnement;
     }
+
 
     /**
-     * Mutateur de la propriété lesExemplaires
+     * Undocumented function
      *
-     * @param array $lesExemplaires
-     * @return void
+     * @return string
      */
-    public function setlesExemplaires(array $lesExemplaires): void {
-        $this->lesExemplaires = $lesExemplaires;
+    public function getDateExpriation():string
+    {
+        return $this->dateExpiration;
     }
 
 
+
+    /**
+     * Undocumented function
+     *
+     * @return string
+     */
+    public function getMdp():string{
+        return $this->mdp;
+    }
+
+   
 
 }
 ?>

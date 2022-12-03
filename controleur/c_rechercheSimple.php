@@ -32,6 +32,7 @@ if(isset($_POST['recherche'])){
             $livreManager = new livreManager(); // Création d'un objet manager de documents
             $livres = $livreManager->getLivreCritereSimple($texte); // chargement de l'ensemble du catalogue
             array_push($vues, "$racine/vue/v_resultatRechercheSimpleLivre.php");
+            array_push($vues, "$racine/vue/Modal/info_livre_modal.php");
             $dvdManager = new dvdManager(); // Création d'un objet manager de documents
             $disques = $dvdManager->getDvdCritereSimple($texte); // chargement de l'ensemble du catalogue
             array_push($vues, "$racine/vue/v_resultatRechercheSimpleDvd.php");
@@ -51,4 +52,3 @@ foreach($vues as $vue){
 }
 include "$racine/vue/footer.php";
 ?>
-

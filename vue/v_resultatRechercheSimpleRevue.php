@@ -1,15 +1,19 @@
+<?php
+foreach ($revues as $uneRevue) {
+    include("$racine/vue/Modal/info_revue_modal.php");
+}
+?>
 <h2>Revues : </h2>
 <div class="container-fluid">
     <?php
     foreach ($revues as $uneRevue) {
     ?>
-
     <div class="row">
         <div class="col-12 mt-3">
             <div class="card">
                 <div class="card-horizontal">
                     <div class="img-square-wrapper">
-                        <img class="" src="" alt="<?= $uneRevue->getTitre() ?>">
+                        <img class="" src="<?= $uneRevue->getImage ?>" alt="<?= $uneRevue->getTitre() ?>">
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">
@@ -24,7 +28,7 @@
                         ?>
                         <p class="card-text">description de la revue...</p>
                         <p class="card-text">
-                            <<? $txt ?>
+                            <? $txt ?>
                         </p>
 
                     </div>
@@ -50,13 +54,15 @@
                         <small class="text-muted">
                             <?= $txtNumeros ?>
                         </small>
+                        <!-- Button trigger modal -->
+                        <button type="button" href="#info_<?= $uneRevue->getId() ?>" class="btn btn-primary" data-toggle="modal">
+                            Réserver votre Revues
+                        </button>
                     </small>
                 </div>
             </div>
         </div>
     </div>
-
-
     <?php
     }
     ?>

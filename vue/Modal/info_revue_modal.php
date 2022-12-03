@@ -1,6 +1,6 @@
 <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" id="info_<?= $uneRevue->getId() ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" id="revue_<?= $uneRevue->getId() ?>" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -11,10 +11,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                <img class="" src="<?= $uneRevue->getImage() ?>" alt="<?= $uneRevue->getTitre() ?>"
-                    style="width: 90px;"><br>
-                <hr>
-                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>

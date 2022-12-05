@@ -15,7 +15,7 @@ class Dvd extends Document {
      * @param TypePublic $public
      * @param string $synopsis
      * @param string $realisateur
-     * @param integer $duree
+     * @param int $duree
      */
     public function __construct(int $id, string $titre, string $image, bool $commandeEnCours, TypePublic $public, string $synopsis, string $realisateur, int $duree)
     {
@@ -46,7 +46,7 @@ class Dvd extends Document {
     /**
      * Accesseur de la propriété duree
      *
-     * @return integer
+     * @return int
      */
     public function getDuree() : int {
         return $this->duree;

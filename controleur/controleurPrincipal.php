@@ -10,6 +10,7 @@ function controleurPrincipal($action)
     if ($connexion->isLoggedOn()) {
         $lesActions["dossierAbonne"] = "c_dossierAbonne.php";
         $lesActions["ModifierMdp"] = $lesActions["dossierAbonne"];
+        $lesActions["ModifierInfo"] = $lesActions["dossierAbonne"];
         $lesActions["deconnexion"] = "c_deconnexion.php";
         $lesActions["rechercheSimple"] = "c_rechercheSimple.php";
         $lesActions["rechercheAvancee"] = "c_rechercheAvancee.php";

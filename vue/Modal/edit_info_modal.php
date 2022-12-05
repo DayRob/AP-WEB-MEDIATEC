@@ -10,22 +10,31 @@
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <form action="./?action=ModifierMdp" method="POST">
-                        <!-- Email input -->
+                    <form action="./?action=ModifierInfo" method="POST">
+                        <!-- info abonne input -->
                         <div class="form-group">
                             <label for="exampleInputEmail1">saisir votre nom</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <input type="text" name="nom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=<?php echo $nom ?>>
                         </div>
-
-                        <!-- Password input -->
-                        <div class="form-outline mb-4">
-                            <input type="password" name="verifMdp" class="form-control" />
-                            <label class="form-label" for="form2Example2">retaper votre nouveau mots de passe</label>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">saisir votre prenom</label>
+                            <input type="text" name="prenom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="entrer un nouveau prenom" value=<?php echo $prenom ?>>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">saisir votre adresse</label>
+                            <input type="text" name="adresse" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value=<?php echo $adresse ?>>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">date de Naissance</label>
+                            <input type="date" name="DateNaissance" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="entrer votre nouvelle date de naissance" value=<?php echo $dateNaissance ?>>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">saisir votre numero de telephone</label>
+                            <input type="tel" name="numeroTel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="saisir sous ce format :06.52.44.44.55" value=<?php echo $numeroTelephone ?>>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuler</button>
-                            <button type="submit" class="btn btn-primary" name="modifierMdp">enregistrer</button>
+                            <button type="submit" class="btn btn-primary" name="modifierInfo">enregistrer</button>
                         </div>
                     </form>
                 </div>

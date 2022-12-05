@@ -96,6 +96,25 @@ class authentificationManager extends Manager
 
     }
 
+    public function ModifierIfo($id,$nom,$prenom,$adresse,$DateNaissance,$numeroTel,):void
+    {
+        
+        try {
+            $q = $this->getPDO()->prepare('UPDATE abonne SET nom = :nom, prenom = :prenom, adresse = :adresse, dateNaissance = :dateNaissance, numeroTel = :numeroTel WHERE id = :id');
+            $q->bindParam(':nom',$nom, PDO::PARAM_STR);
+            $q->bindParam(':prenom',$prenom, PDO::PARAM_STR);
+            $q->bindParam(':adresse',$adresse, PDO::PARAM_STR);
+            $q->bindParam(':dateNaissance',$DateNaissance, PDO::PARAM_STR);
+            $q->bindParam(':numeroTel',$numeroTel, PDO::PARAM_STR);
+            $q->bindParam(':id',$id, PDO::PARAM_STR);
+            $q->execute();
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+
+    }
+
 
     public function verifNouveauMdp($nouveaumdp, $verifNouveaumdp):bool
     {

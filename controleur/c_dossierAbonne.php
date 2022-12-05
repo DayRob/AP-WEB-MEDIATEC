@@ -24,28 +24,34 @@ $libelleTypeAbonnement = $typeAbonnement->getLibelle();
  * changer le mdp
  */
 if (isset($_POST["modifierMdp"])) {
-    $nouveauMdp = $_POST["nouveauMdp"];
-    $verif = $_POST["verifMdp"];
-    if ($donner->verifNouveauMdp($nouveauMdp,$verif)==true) {
-        
-        echo '<div class="alert alert-success" role="alert">
+  $nouveauMdp = $_POST["nouveauMdp"];
+  $verif = $_POST["verifMdp"];
+  if ($donner->verifNouveauMdp($nouveauMdp, $verif) == true) {
+
+    echo '<div class="alert alert-success" role="alert">
         mots de passe modifier !
       </div>';
-        
-        $donner->ModifierMdp($id, $nouveauMdp);
-        $donner->login($adresseEmail,$nouveauMdp);
-        
-        
-       
-        
-    }
-    else
-    {
-        echo'<div class="alert alert-warning" role="alert">
+
+    $donner->ModifierMdp($id, $nouveauMdp);
+    $donner->login($adresseEmail, $nouveauMdp);
+  } else {
+    echo '<div class="alert alert-warning" role="alert">
         le mots de passe ne correspond pas !
       </div>';
-    }
+  }
+}
 
+
+if (isset($_POST["modifierInfo"])) {
+  $nouveauNom = $_POST["nom"];
+  $nouveauPrenom=$_POST["prenom"];
+  $nouveauAdresse=$_POST["adresse"];
+  $nouveauDateNaissance = date($_POST["DateNaissance"]);
+  $nouveauNumeroTelephone= $_POST["numeroTel"];
+
+  $donner->ModifierIfo($id,$nouveauNom,$nouveauPrenom,$nouveauAdresse,$nouveauDateNaissance,$nouveauNumeroTelephone);
+
+  header('location: index.php?action=dossierAbonne');
 }
 
 

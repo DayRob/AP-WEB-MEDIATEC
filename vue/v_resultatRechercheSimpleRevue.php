@@ -1,6 +1,7 @@
 <?php
 foreach ($revues as $uneRevue) {
     include("$racine/vue/Modal/info_revue_modal.php");
+    include("$racine/vue/Modal/add_revue_modal.php");
 }
 ?>
 <h2>Revues : </h2>

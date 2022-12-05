@@ -20,7 +20,7 @@ class RevueManager extends Manager
         $lesRevues = array();
         foreach($r1 as $revue)
         {
-            $lesRevues[$revue['id']] = new Revue($revue['id'], $revue['titre'], $revue['empruntable']);
+            $lesRevues[$revue['id']] = new Revue($revue['id'], $revue['titre'], $revue['empruntable'], $revue['delai_miseadispo']);
             // on récupère la collection de parutions de cette revue
             $q2 = $this->getPDO()->prepare('SELECT * FROM parution WHERE idRevue = :id ORDER BY numero');
             $q2->bindParam(':id',  $revue['id'], PDO::PARAM_INT);

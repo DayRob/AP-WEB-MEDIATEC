@@ -4,7 +4,8 @@ class Revue {
     private $id;
     private $titre; 
     private $empruntable;
-    private $lesNumeros ;
+    private $lesNumeros;
+    private $delai;
     
     /**
      * Constructeur de la classe Revue
@@ -13,11 +14,12 @@ class Revue {
      * @param string $titre
      * @param string $empruntable
      */
-    public function __construct(int $id, string $titre, string $empruntable)
+    public function __construct(int $id, string $titre, string $empruntable, int $delai)
     {
         $this->id = $id;
         $this->titre = $titre;
         $this->empruntable = $empruntable;
+        $this->delai = $delai;
     }
 
     /**
@@ -29,6 +31,9 @@ class Revue {
         return $this->id;
     }
 
+    public function getDelai() : int{
+        return $this->delai;
+    }
     /**
      * Accesseur de la propriété titre
      *

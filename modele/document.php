@@ -81,6 +81,11 @@ class Document {
         return $this->lesExemplaires;
     }
 
+    public function getLesTitresExemplaire() : string {
+        return $this->exemplaire->getNumero();
+    }
+
+
     /**
      * Mutateur de la propriété id
      *

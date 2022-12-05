@@ -40,5 +40,16 @@ class Exemplaire {
         return $this->rayon->getLibelle();
     }
 
+    public function getLeTitre() : string {
+        return $this->document->getTitre();
+    }
+    
+    public function getLEtat() : string {
+        return $this->etat->getTitre();
+    }
+
+    public function getNumero() : string {
+        return $this->numero;
+    }
 }
 ?>

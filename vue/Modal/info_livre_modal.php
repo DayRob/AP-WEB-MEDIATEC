@@ -1,6 +1,6 @@
 <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" id="info_<?= $unLivre->getId() ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" id="info_<?= $unLivre->getId() ?>" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -20,7 +20,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary">Réserver</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_livre<?= $unLivre->getId() ?>"
+                data-whatever="">Reserver</button>
             </div>
         </div>
     </div>

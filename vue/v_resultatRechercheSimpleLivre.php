@@ -1,6 +1,7 @@
 <?php
 foreach ($livres as $unLivre) {
     include("$racine/vue/Modal/info_livre_modal.php");
+    include("$racine/vue/Modal/add_livre_modal.php");
 }
 ?>
 <h2>Livres : </h2>

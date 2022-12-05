@@ -47,6 +47,30 @@ class DvdManager extends Manager
         return $lesDvd;
     }
 
+    public function setDvd($id, $nbExemplaire, $dateCommande, $montant, $idDocument){
+         // recupération des types de public
+         $typePublicManager = new TypePublicManager(); // Création d'un objet manager de type de public
+         $lesPublics = $typePublicManager->getList(); // chargement du dictionnaire des types de public
+         // recupération des états
+         $etatManager = new EtatManager(); // Création d'un objet manager d'état
+         $lesEtats = $etatManager->getList(); // chargement du dictionnaire des états
+         $rayonManager = new RayonManager(); // Création d'un objet manager de rayon
+         $lesRayons = $rayonManager->getList(); // chargement du dictionnaire des états
+        try{
+        $q = $this->getPDO()->prepare('INSERT INTO `commande`(`id`, `nbExemplaire`, `dateCommande`, `montant`, `idDocument`) VALUES (:id, :nbExemplaire, :dateCommande, :montant, :idDocument)');
+        $q->bindParam(':id',$id, PDO::PARAM_STR);
+        $q->bindParam(':nbExemplaire',$nbExemplaire, PDO::PARAM_STR);
+        $q->bindParam(':dateCommande',$dateCommande, PDO::PARAM_STR);
+        $q->bindParam(':montant',$montant, PDO::PARAM_STR);
+        $q->bindParam(':idDocument',$idDocument, PDO::PARAM_STR);
+        $q->execute();
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+    
+    }   
+
     /**
      * Renvoie l'objet Dvd dont l'id correspond à la valeur du parametre $id
      *

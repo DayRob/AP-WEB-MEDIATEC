@@ -11,10 +11,27 @@
                 </button>
             </div>
             <div class="modal-body">
+                <div class="img-square-wrapper">
+                    <img class="" src="" alt="<?= $uneRevue->getTitre() ?>">
+                </div>
+                <div class="card-body">
+                    <?php
+                        if ($uneRevue->getEmpruntable()) {
+                            $txt = "Cette revue est empruntable";
+                        } else {
+                            $txt = "Cette revue n'est pas empruntable";
+                        }
+                        ?>
+                    <p class="card-text">description de la revue...</p>
+                    <p class="card-text">
+                        <? $txt ?>
+                    </p>
+
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary">Réserver</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Réserver</button>
             </div>
         </div>
     </div>

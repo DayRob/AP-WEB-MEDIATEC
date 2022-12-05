@@ -1,6 +1,7 @@
 <?php
 foreach ($disques as $unDvd) {
     include("$racine/vue/Modal/info_dvd_modal.php");
+    include("$racine/vue/Modal/add_dvd_modal.php");
 }
 ?>
 <h2>Disques DVD : </h2>

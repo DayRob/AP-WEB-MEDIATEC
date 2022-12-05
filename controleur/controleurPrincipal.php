@@ -1,8 +1,4 @@
 <?php
-
-
-
-
 function controleurPrincipal($action)
 {
     $connexion = new authentificationManager();
@@ -12,6 +8,7 @@ function controleurPrincipal($action)
         $lesActions["ModifierMdp"] = $lesActions["dossierAbonne"];
         $lesActions["deconnexion"] = "c_deconnexion.php";
         $lesActions["rechercheSimple"] = "c_rechercheSimple.php";
+        $lesActions["setDvd"] = "c_reserverDvd.php";
         $lesActions["rechercheAvancee"] = "c_rechercheAvancee.php";
         $lesActions["nouveautes"] = "c_nouveautes.php";
         $lesActions["faq"] = "c_faq.php";
@@ -37,8 +34,6 @@ function controleurPrincipal($action)
         return $lesActions["defaut"];
     }
 }
-
-
 function chargerModeles($racine)
 {
     require_once("$racine/modele/Manager.php");

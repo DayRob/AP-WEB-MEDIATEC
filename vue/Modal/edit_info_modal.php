@@ -29,6 +29,10 @@
                             <input type="date" name="DateNaissance" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="entrer votre nouvelle date de naissance" value=<?php echo $dateNaissance ?>>
                         </div>
                         <div class="form-group">
+                            <label for="exampleInputEmail1">adresse email</label>
+                            <input type="email" name="adresseMail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="entrer votre nouvelle adrresse email" value=<?php echo $adresseEmail ?>>
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputEmail1">saisir votre numero de telephone</label>
                             <input type="tel" name="numeroTel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="saisir sous ce format :06.52.44.44.55" value=<?php echo $numeroTelephone ?>>
                         </div>

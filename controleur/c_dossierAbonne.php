@@ -47,9 +47,11 @@ if (isset($_POST["modifierInfo"])) {
   $nouveauPrenom=$_POST["prenom"];
   $nouveauAdresse=$_POST["adresse"];
   $nouveauDateNaissance = date($_POST["DateNaissance"]);
+  $nouveauAdresseMail = $_POST["adresseMail"];
   $nouveauNumeroTelephone= $_POST["numeroTel"];
 
-  $donner->ModifierIfo($id,$nouveauNom,$nouveauPrenom,$nouveauAdresse,$nouveauDateNaissance,$nouveauNumeroTelephone);
+  $donner->ModifierIfo($id,$nouveauNom,$nouveauPrenom,$nouveauAdresse,$nouveauDateNaissance,$nouveauAdresseMail,$nouveauNumeroTelephone);
+  $donner->login($nouveauAdresseMail,$motDePasse);
 
   header('location: index.php?action=dossierAbonne');
 }

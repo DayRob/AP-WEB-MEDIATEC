@@ -11,9 +11,11 @@ class authentificationManager extends Manager
         $abonneManger = new abonneManager();
         $leAbonne = $abonneManger->getUtilisateurByMail($mail);
 
+
         if ($leAbonne->getMdp() == $this->getHashmdp($mdp)) {
             $_SESSION["mail"] = $leAbonne->getAdresseMail();
             $_SESSION["mdp"] = $leAbonne->getMdp();
+            $_SESSION["id"] = $leAbonne->getId();
         }
     }
 
@@ -22,9 +24,9 @@ class authentificationManager extends Manager
     private function getHashmdp(string $mdp): string
     {
         $q = $this->getPDO()->prepare('SELECT PASSWORD(:mdp) as hash');
-        $q->bindparam(':mdp',  $mdp , PDO::PARAM_STR);
+        $q->bindparam(':mdp',  $mdp, PDO::PARAM_STR);
         $q->execute();
-        
+
         $r = $q->fetch(PDO::FETCH_ASSOC);
         return $r['hash'];
     }
@@ -36,12 +38,12 @@ class authentificationManager extends Manager
         }
         $ret = false;
 
-        if (isset($_SESSION["mail"])) {
+        if (isset($_SESSION["id"])) {
             $abonneManger = new abonneManager();
-            $leAbonne = $abonneManger->getUtilisateurByMail($_SESSION["mail"]);
-            
+            $leAbonne = $abonneManger->getUtilisateurById($_SESSION["id"]);
+
             if (
-                $leAbonne->getAdresseMail() == $_SESSION["mail"] && $leAbonne->getMdp() == $_SESSION["mdp"]
+                $leAbonne->getId() == $_SESSION["id"] && $leAbonne->getMdp() == $_SESSION["mdp"]
             ) {
                 $ret = true;
             }
@@ -56,9 +58,9 @@ class authentificationManager extends Manager
             session_start();
         }
 
-        if (isset($_SESSION["mail"])) {
+        if (isset($_SESSION["id"])) {
             $abonneManger = new abonneManager();
-            $leAbonne = $abonneManger->getUtilisateurByMail($_SESSION["mail"]);
+            $leAbonne = $abonneManger->getUtilisateurById($_SESSION["id"]);
         }
         return $leAbonne;
     }
@@ -69,9 +71,10 @@ class authentificationManager extends Manager
             session_start();
         }
 
-        unset($_SESSION["mail"]);
-        unset($_SESSION["mdp"]);
+        unset($_SESSION["id"]);
     }
+
+    
 
 
     /**
@@ -81,57 +84,46 @@ class authentificationManager extends Manager
      * @param [type] $mdp
      * @return void
      */
-    public function ModifierMdp($id,$mdp):void
+    public function ModifierMdp($id, $mdp): void
     {
-        $mdp=$this->getHashmdp($mdp);
+        $mdp = $this->getHashmdp($mdp);
         try {
             $q = $this->getPDO()->prepare('UPDATE abonne SET mdp = :mdp WHERE id = :id');
-            $q->bindParam(':mdp',$mdp, PDO::PARAM_STR);
-            $q->bindParam(':id',$id, PDO::PARAM_STR);
+            $q->bindParam(':mdp', $mdp, PDO::PARAM_STR);
+            $q->bindParam(':id', $id, PDO::PARAM_STR);
             $q->execute();
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage();
             die();
         }
-
     }
 
-    // public function ModifierIfo($id,$nom,$prenom,$adresse,$DateNaissance,$adresseEmail,$numeroTel):void
-    // {
-        
-    //     try {
-    //         $q = $this->getPDO()->prepare('UPDATE abonne SET nom = :nom, prenom = :prenom, adresse = :adresse, dateNaissance = :dateNaissance,adresseEmail = :adresseEmail, numeroTel = :numeroTel WHERE id = :id');
-    //         $q->bindParam(':nom',$nom, PDO::PARAM_STR);
-    //         $q->bindParam(':prenom',$prenom, PDO::PARAM_STR);
-    //         $q->bindParam(':adresse',$adresse, PDO::PARAM_STR);
-    //         $q->bindParam(':dateNaissance',$DateNaissance, PDO::PARAM_STR);
-    //         $q->bindParam(':adresseEmail',$adresseEmail, PDO::PARAM_STR);
-    //         $q->bindParam(':numeroTel',$numeroTel, PDO::PARAM_STR);
-    //         $q->bindParam(':id',$id, PDO::PARAM_STR);
-    //         $q->execute();
-    //     } catch (PDOException $e) {
-    //         print "Erreur !: " . $e->getMessage();
-    //         die();
-    //     }
-
-    // }
-
-
-    public function verifNouveauMdp($nouveaumdp, $verifNouveaumdp):bool
+    public function ModifierInfo($id, $nom, $prenom, $adresse, $DateNaissance, $adresseEmail, $numeroTel): void
     {
-        if($nouveaumdp == $verifNouveaumdp)
-        {
-            return true;
+
+        try {
+            $q = $this->getPDO()->prepare('UPDATE abonne SET nom = :nom, prenom = :prenom, adresse = :adresse, dateNaissance = :dateNaissance,adresseEmail = :adresseEmail, numeroTel = :numeroTel WHERE id = :id');
+            $q->bindParam(':nom', $nom, PDO::PARAM_STR);
+            $q->bindParam(':prenom', $prenom, PDO::PARAM_STR);
+            $q->bindParam(':adresse', $adresse, PDO::PARAM_STR);
+            $q->bindParam(':dateNaissance', $DateNaissance, PDO::PARAM_STR);
+            $q->bindParam(':adresseEmail', $adresseEmail, PDO::PARAM_STR);
+            $q->bindParam(':numeroTel', $numeroTel, PDO::PARAM_STR);
+            $q->bindParam(':id', $id, PDO::PARAM_STR);
+            $q->execute();
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
         }
-        else
-        {
+    }
+
+
+    public function verifNouveauMdp($nouveaumdp, $verifNouveaumdp): bool
+    {
+        if ($nouveaumdp == $verifNouveaumdp) {
+            return true;
+        } else {
             return false;
         }
     }
-
-
-
-    
-
-
 }

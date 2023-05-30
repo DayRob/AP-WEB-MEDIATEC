@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @details Contient la structure de l'objet abonne
+ */
 class abonne {
     private $id;
     private string $nom; 
@@ -15,7 +18,7 @@ class abonne {
     
     
     /**
-     * Undocumented function
+     * Constructeur de la classe abonne
      *
      * @param integer $unId
      * @param string $unNom
@@ -111,7 +114,7 @@ class abonne {
 
 
     /**
-     * Undocumented function
+     * retourne la date d'expriation de l'abonnement
      *
      * @return string
      */
@@ -123,7 +126,7 @@ class abonne {
 
 
     /**
-     * Undocumented function
+     * getter du mdp
      *
      * @return string
      */

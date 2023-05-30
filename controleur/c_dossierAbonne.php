@@ -16,7 +16,6 @@ $adresseEmail = $unAbonne->getAdresseMail();
 $numeroTelephone = $unAbonne->getNumeroTel();
 $motDePasse = $unAbonne->getMdp();
 $dateExpriation = $unAbonne->getDateExpriation();
-
 $typeAbonnement = $unAbonne->getTypeAbonnemt();
 $libelleTypeAbonnement = $typeAbonnement->getLibelle();
 
@@ -33,14 +32,18 @@ if (isset($_POST["modifierMdp"])) {
 
     $donner->ModifierMdp($id, $nouveauMdp);
     $donner->login($adresseEmail, $nouveauMdp);
+    header('location: index.php?action=dossierAbonne');
   } else {
 
     $message = "les mots de passe ne corresponde pas ";
     include "$racine/vue/alert/alert-error.php";
+
   }
 }
 
-
+/**
+ * Permet de changer les info d'un abonne
+ */
 if (isset($_POST["modifierInfo"])) {
   $nouveauNom = $_POST["nom"];
   $nouveauPrenom = $_POST["prenom"];
@@ -55,7 +58,9 @@ if (isset($_POST["modifierInfo"])) {
   
   $message = "changement effectuer";
   include "$racine/vue/alert/alert-succes.php";
+  header('location: index.php?action=dossierAbonne');
 }
+else 
 
 
 include "$racine/vue/header.php";

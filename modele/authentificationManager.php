@@ -3,6 +3,13 @@
 
 class authentificationManager extends Manager
 {
+    /**
+     * Fonction qui permet de crée une session en prenant en paramètre un login et un mdp
+     *
+     * @param [String] $mail
+     * @param [String] $mdp
+     * @return void
+     */
     public function login($mail, $mdp): void
     {
         if (!isset($_SESSION)) {
@@ -21,6 +28,12 @@ class authentificationManager extends Manager
 
 
 
+    /**
+     * Fonction qui permet de récuperer le mdp hasher
+     *
+     * @param string $mdp
+     * @return string
+     */
     private function getHashmdp(string $mdp): string
     {
         $q = $this->getPDO()->prepare('SELECT PASSWORD(:mdp) as hash');
@@ -31,6 +44,11 @@ class authentificationManager extends Manager
         return $r['hash'];
     }
 
+    /**
+     * Fonction qui permet de vérifier si un utilisateur est connecter et r'envoie true ou false
+     *
+     * @return boolean
+     */
     public function isLoggedOn(): bool
     {
         if (!isset($_SESSION)) {
@@ -52,6 +70,11 @@ class authentificationManager extends Manager
     }
 
 
+    /**
+     * Fonction qui permet de r'envoier les infos d'un abonne connecter
+     *
+     * @return abonne
+     */
     public function infoAbonne(): abonne
     {
         if (!isset($_SESSION)) {
@@ -65,6 +88,11 @@ class authentificationManager extends Manager
         return $leAbonne;
     }
 
+    /**
+     * FOnction qui permet de ce déconnecter et donc de désactiver la session
+     *
+     * @return void
+     */
     public function logout(): void
     {
         if (!isset($_SESSION)) {
@@ -98,6 +126,18 @@ class authentificationManager extends Manager
         }
     }
 
+    /**
+     * Fonction qui permet de changer les Infos d'un abonne
+     *
+     * @param [String] $id
+     * @param [String] $nom
+     * @param [String] $prenom
+     * @param [String] $adresse
+     * @param [String] $DateNaissance
+     * @param [String] $adresseEmail
+     * @param [String] $numeroTel
+     * @return void
+     */
     public function ModifierInfo($id, $nom, $prenom, $adresse, $DateNaissance, $adresseEmail, $numeroTel): void
     {
 
@@ -118,6 +158,13 @@ class authentificationManager extends Manager
     }
 
 
+    /**
+     * permet de vérifier si les deux chaines de caractères correpond et r'envoie true si c'est     le cas
+     *
+     * @param [String] $nouveaumdp
+     * @param [String] $verifNouveaumdp
+     * @return boolean
+     */
     public function verifNouveauMdp($nouveaumdp, $verifNouveaumdp): bool
     {
         if ($nouveaumdp == $verifNouveaumdp) {

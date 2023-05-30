@@ -1,6 +1,12 @@
 <?php
 class abonneManager extends Manager
 {
+
+     /**
+      * Fonction qui retourne tout les utilisateur dans un tableau 
+      *
+      * @return array
+      */
     public function getUtilisateur():array
     {
         try {
@@ -25,7 +31,9 @@ class abonneManager extends Manager
                     $lesTypesAbonnement[$unABonnee['idTypeAbonnement']]
                 );
                 $lesAbonnes[] = $abonne; // Ajoute l'abonné à l'array $lesAbonnes
+                
             }
+            
             return $lesAbonnes;
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage();
@@ -33,6 +41,12 @@ class abonneManager extends Manager
         }
     }
 
+    /**
+     * Fonction qui prend en paramètre un email et qui r'envoie l'utilisateur associé a cette email
+     *
+     * @param [String] $email
+     * @return abonne
+     */
     public function getUtilisateurByMail($email): abonne
     {
 
@@ -54,6 +68,12 @@ class abonneManager extends Manager
         }
     }
 
+    /**
+     * Fonction qui prend en paramètre un id et qui r'envoie l'utilisateur associé a cette id
+     *
+     * @param [String] $id
+     * @return abonne
+     */
     public function getUtilisateurById($id): abonne
     {
 

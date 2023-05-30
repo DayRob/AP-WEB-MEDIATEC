@@ -7,7 +7,7 @@ $connexion =  new authentificationManager();
 $abonneManager = new abonneManager();
 $lesAbonnes = $abonneManager->getUtilisateur();
 
-// recuperation des donnees GET, POST, et SESSION
+// recuperation des donnees  POST
 if (isset($_POST["mail"]) && isset($_POST["mdp"])){
    
     $mail=$_POST["mail"];
@@ -15,6 +15,7 @@ if (isset($_POST["mail"]) && isset($_POST["mdp"])){
 
     foreach($lesAbonnes as $unAbonne)
     {
+        
         if($unAbonne->getAdresseMail() ==  $mail)
         {
            
@@ -22,13 +23,7 @@ if (isset($_POST["mail"]) && isset($_POST["mdp"])){
             $connexion->login($mail, $mdp);
             break;
         }
-        else
-        {
-            $message = "email non trouvé";
-            include "$racine/vue/alert/alert-error.php";
-            break;
-
-        }
+        
     }
    
     

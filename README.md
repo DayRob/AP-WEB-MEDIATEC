@@ -1,3 +1,4 @@
+![logo](https://github.com/DayRob/AP-WEB-MEDIATEC/assets/78346006/b79908d9-7d9a-4216-af62-1323df1a8f12)
 # Documentation utilisateur 
 Pour l’application PHP Mediateq réalisé par Côme Villeroy de Galhau, Johan Poyet et Anthony Béal. 
 

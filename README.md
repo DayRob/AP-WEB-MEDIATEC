@@ -54,4 +54,21 @@ Pour vous déconnecter, cliquez sur votre prénom en haut à droite et sélectio
 </p>
 
 
+Pour lancer la fonctionnalité de Gestion de la réservation des documents, il suffit de se rendre sur la page des recherches simple, il est possible aussi d’effectuée une recherche par mots ou lettre. Pour que cette fonctionnalité marche il faut se connecter en tant qu’utilisateur. 
+
+ ![image](https://github.com/DayRob/AP-WEB-MEDIATEC/assets/51418295/e4ff656e-4019-4de0-b43f-b79b29b848ea)
+
+Une fois sur cette page il faudra lancer la recherche en appuyant sur le bouton « lancer la recherche » pour avoir ce résultat.
+
+ ![image](https://github.com/DayRob/AP-WEB-MEDIATEC/assets/51418295/d9659495-35ee-4fe1-9a2a-9f890955878d)
+
+
+Vous pouvez maintenant accéder au informations des livres des dvd et des revus avec les disponibilités, leurs informations et aussi la possibilité de réserver un exemplaire en fonction de son état. Lorsque vous appuyer sur le bouton « afficher les détails » vous verrez cette modal apparaitre. 
+
+![image](https://github.com/DayRob/AP-WEB-MEDIATEC/assets/51418295/a1626bdb-833a-40d9-ac68-8d7d1d814656)
+
+ 
+Elle vous permet de réserver un exemplaire disponible d’un document en fonction de son état. Une fois la réservation prise en compte, il est possible de voir le nombre de réservation pour votre compte depuis l’espace utilisateur.
+
+
 ## Aide-mémoire :

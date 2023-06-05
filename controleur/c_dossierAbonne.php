@@ -4,6 +4,8 @@ $titre = "Mon Dossier";
 
 $donner = new authentificationManager();
 $unAbonne = $donner->infoAbonne();
+$Emprunt = new EmpruntManager();
+
 
 //info user identifier 
 
@@ -18,6 +20,8 @@ $motDePasse = $unAbonne->getMdp();
 $dateExpriation = $unAbonne->getDateExpriation();
 $typeAbonnement = $unAbonne->getTypeAbonnemt();
 $libelleTypeAbonnement = $typeAbonnement->getLibelle();
+$nombreEmrunts = $Emprunt->getNumberEmprunt($_SESSION['id']);
+
 
 /**
  * changer le mdp

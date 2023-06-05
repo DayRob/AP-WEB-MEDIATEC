@@ -18,6 +18,7 @@ function controleurPrincipal($action)
         $lesActions["faq"] = "c_faq.php";
         $lesActions["accueil"] = $lesActions["rechercheSimple"];
         $lesActions["defaut"] = $lesActions["accueil"];
+        $lesActions["emprunt"] = "c_emprunt.php";
     } else {
         $lesActions["rechercheSimple"] = "c_rechercheSimple.php";
         $lesActions["rechercheAvancee"] = "c_rechercheAvancee.php";
@@ -43,7 +44,8 @@ function controleurPrincipal($action)
 function chargerModeles($racine)
 {
     require_once("$racine/modele/Manager.php");
-    require_once("$racine/modele/Document.php");
+    require_once("$racine/modele/document.php");
+    require_once("$racine/modele/documentManager.php");
     require_once("$racine/modele/Livre.php");
     require_once("$racine/modele/Dvd.php");
     require_once("$racine/modele/Exemplaire.php");
@@ -63,4 +65,7 @@ function chargerModeles($racine)
     require_once("$racine/modele/TypeAbonement.php");
     require_once("$racine/modele/typeAbonementManager.php");
     require_once("$racine/modele/authentificationManager.php");
+    require_once("$racine/modele/emprunt.php");
+    require_once("$racine/modele/empruntManager.php");
+    
 }

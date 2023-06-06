@@ -108,7 +108,7 @@
                     <div class="col-sm-6 mb-3">
                         <div class="card h-100">
                             <div class="card-body">
-                                <h6 class="d-flex align-items-center mb-3">Reservation : </h6>
+                                <h6 class="d-flex align-items-center mb-3">Reservation : <?php echo "$nombreReservation"?></h6>
                             </div>
                         </div>
                     </div>

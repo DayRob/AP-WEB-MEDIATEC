@@ -10,7 +10,6 @@ $titre = "Réservation";
 
 if(isset($_POST["reservation"])){
     $idAbonne = $_SESSION["id"];
-    var_dump("coucou");
     $idDocument = $_POST["idDocument"];
     $idExemplaire = $_POST["idExemplaire"];
     

@@ -31,9 +31,21 @@ class exemplaireManager extends Manager{
     }
 
 
-    public function getExemplaireById(string $numero) : array 
+    public function getExemplaireById(string $numero) : Exemplaire
     {
         $lesExemplaires = $this->getListByDocument();
+
+        foreach($lesExemplaires as $unExemplaire)
+       {
+           if($unExemplaire->getLeNumero() == $numero)
+           {
+               $lExemplaire = $unExemplaire;
+
+           }
+       }
+       return $lExemplaire;
+        
+        
     }
     
     

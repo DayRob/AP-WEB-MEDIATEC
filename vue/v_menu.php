@@ -45,10 +45,8 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="./?action=dossierAbonne">Mon dossier</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Mes prêts en cours</a>
                 <a class="dropdown-item" href="./?action=reservation">Mes réservations</a>
                 <a class="dropdown-item" href="./?action=emprunt">Mes prêts en cours</a>
-                <a class="dropdown-item" href="#">Mes réservations</a>
                 <a class="dropdown-item" href="#">Mes frais</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Historique des prêts</a>

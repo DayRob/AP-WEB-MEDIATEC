@@ -25,5 +25,13 @@ class reservation {
     public function getDocumentReservation() : Exemplaire {
         return $this->exemplaire;
     }
+
+    /**
+     * Get the value of document
+     */ 
+    public function getDocument()
+    {
+        return $this->document;
+    }
 }
 ?>

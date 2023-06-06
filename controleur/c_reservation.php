@@ -16,11 +16,14 @@ if(isset($_POST["reservation"])){
     
     $reservationManager->setRerservation($idAbonne, $idDocument, $idExemplaire);
 }
+<<<<<<< HEAD
 
 $lesReservation=$reservationManager->getReservationAbonne($_SESSION["id"]);
 
 
 
+=======
+>>>>>>> a2a3eb8183ab079e9184b8896aac5c66c33ef948
 // appel du script de vue qui permet de gerer l'affichage des donnees
 include "$racine/vue/header.php";
 

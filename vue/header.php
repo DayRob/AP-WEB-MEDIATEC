@@ -12,6 +12,7 @@
 	<link href="bib/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
 	
+	
 	<!-- Favicons
 ================================================== -->
 	<link rel="shortcut icon" href="css/logo.ico">

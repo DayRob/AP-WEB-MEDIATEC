@@ -4,6 +4,8 @@ $titre = "Mon Dossier";
 
 $donner = new authentificationManager();
 $unAbonne = $donner->infoAbonne();
+$Emprunt = new EmpruntManager();
+
 
 //info user identifier 
 
@@ -16,9 +18,10 @@ $adresseEmail = $unAbonne->getAdresseMail();
 $numeroTelephone = $unAbonne->getNumeroTel();
 $motDePasse = $unAbonne->getMdp();
 $dateExpriation = $unAbonne->getDateExpriation();
-
 $typeAbonnement = $unAbonne->getTypeAbonnemt();
 $libelleTypeAbonnement = $typeAbonnement->getLibelle();
+$nombreEmrunts = $Emprunt->getNumberEmprunt($_SESSION['id']);
+
 
 /**
  * changer le mdp
@@ -28,33 +31,40 @@ if (isset($_POST["modifierMdp"])) {
   $verif = $_POST["verifMdp"];
   if ($donner->verifNouveauMdp($nouveauMdp, $verif) == true) {
 
-    echo '<div class="alert alert-success" role="alert">
-        mots de passe modifier !
-      </div>';
+    $message = "mots de passe changer";
+    include "$racine/vue/alert/alert-succes.php";
 
     $donner->ModifierMdp($id, $nouveauMdp);
     $donner->login($adresseEmail, $nouveauMdp);
+    header('location: index.php?action=dossierAbonne');
   } else {
-    echo '<div class="alert alert-warning" role="alert">
-        le mots de passe ne correspond pas !
-      </div>';
+
+    $message = "les mots de passe ne corresponde pas ";
+    include "$racine/vue/alert/alert-error.php";
+
   }
 }
 
-
+/**
+ * Permet de changer les info d'un abonne
+ */
 if (isset($_POST["modifierInfo"])) {
   $nouveauNom = $_POST["nom"];
-  $nouveauPrenom=$_POST["prenom"];
-  $nouveauAdresse=$_POST["adresse"];
+  $nouveauPrenom = $_POST["prenom"];
+  $nouveauAdresse = $_POST["adresse"];
   $nouveauDateNaissance = date($_POST["DateNaissance"]);
   $nouveauAdresseMail = $_POST["adresseMail"];
-  $nouveauNumeroTelephone= $_POST["numeroTel"];
+  $nouveauNumeroTelephone = $_POST["numeroTel"];
 
-  $donner->ModifierIfo($id,$nouveauNom,$nouveauPrenom,$nouveauAdresse,$nouveauDateNaissance,$nouveauAdresseMail,$nouveauNumeroTelephone);
-  $donner->login($nouveauAdresseMail,$motDePasse);
+  $donner->ModifierInfo($id, $nouveauNom, $nouveauPrenom, $nouveauAdresse, $nouveauDateNaissance, $nouveauAdresseMail, $nouveauNumeroTelephone);
 
+  $donner->login($nouveauAdresseMail, $motDePasse);
+  
+  $message = "changement effectuer";
+  include "$racine/vue/alert/alert-succes.php";
   header('location: index.php?action=dossierAbonne');
 }
+else 
 
 
 include "$racine/vue/header.php";

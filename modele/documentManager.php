@@ -19,6 +19,28 @@ class documentManager extends Manager
 
         return $lesDocuments;
     }
+
+    
+    public function getDocumentById(string $idDocument)
+    {
+       
+       $livreManager = new LivreManager();
+       $lesLivres = $livreManager->getList();
+       $DvdManager = new DvdManager();
+       $lesDvds = $DvdManager->getList();
+       $lesDocuments = array_merge($lesLivres,$lesDvds);
+       foreach($lesDocuments as $unDocument)
+       {            
+           if($unDocument->getId() == $idDocument)
+           {
+               $leDocument = $unDocument;
+
+           }   
+       }
+       return $leDocument;
+    }
 }
 
 ?>
+
+

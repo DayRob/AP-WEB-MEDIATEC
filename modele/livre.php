@@ -8,7 +8,7 @@ class Livre extends Document {
     /**
      * Constructeur de la classe Livre
      *
-     * @param integer $id
+     * @param string $id
      * @param string $titre
      * @param string $image
      * @param boolean $commandeEnCours
@@ -17,7 +17,7 @@ class Livre extends Document {
      * @param string $auteur
      * @param string $collection
      */
-    public function __construct(int $id, string $titre, string $image, bool $commandeEnCours, TypePublic $public, string $ISBN, string $auteur, string $collection)
+    public function __construct(string $id, string $titre, string $image, bool $commandeEnCours, TypePublic $public, string $ISBN, string $auteur, string $collection)
     {
         parent::__construct($id, $titre, $image, $commandeEnCours, $public);
         $this->ISBN = $ISBN;
@@ -51,8 +51,6 @@ class Livre extends Document {
     public function getCollection() : string {
         return $this->collection;
     }
-
-    // a completer
 
 }
 ?>

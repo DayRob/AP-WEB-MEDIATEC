@@ -11,13 +11,13 @@ class Document {
     /**
      * Undocumented function
      *
-     * @param integer $id
+     * @param string $id
      * @param string $titre
      * @param string $image
      * @param boolean $commandeEnCours
      * @param TypePublic $public
      */
-    public function __construct(int $id, string $titre, string $image, bool $commandeEnCours, TypePublic $public)
+    public function __construct(string $id, string $titre, string $image, bool $commandeEnCours, TypePublic $public)
     {
         $this->id = $id;
         $this->titre = $titre;
@@ -32,7 +32,7 @@ class Document {
      *
      * @return integer
      */
-    public function getId() : int {
+    public function getId() : string {
         return $this->id;
     }
 
@@ -78,9 +78,17 @@ class Document {
      * @return array
      */
     public function getLesExemplaires() : array {
-        return $this->lesExemplaires;
+       return $this->lesExemplaires;
     }
 
+    public function getUnExemplaire($numero) : Exemplaire {
+        $lesExemplaires =  $this->lesExemplaires;
+        foreach($lesExemplaires as $unExemplaire){
+            if ($unExemplaire->getLeNumero == $numero){
+                return $unExemplaire;
+            }
+        }
+    }
     /**
      * Mutateur de la propriété id
      *

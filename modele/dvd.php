@@ -8,7 +8,7 @@ class Dvd extends Document {
     /**
      * constructeur de la classe Dvd
      *
-     * @param integer $id
+     * @param string $id
      * @param string $titre
      * @param string $image
      * @param boolean $commandeEnCours
@@ -17,7 +17,7 @@ class Dvd extends Document {
      * @param string $realisateur
      * @param integer $duree
      */
-    public function __construct(int $id, string $titre, string $image, bool $commandeEnCours, TypePublic $public, string $synopsis, string $realisateur, int $duree)
+    public function __construct(string $id, string $titre, string $image, bool $commandeEnCours, TypePublic $public, string $synopsis, string $realisateur, int $duree)
     {
         parent::__construct($id, $titre, $image, $commandeEnCours, $public);
         $this->synopsis = $synopsis;

@@ -1,6 +1,5 @@
 <?php
 
-
 class authentificationManager extends Manager
 {
     public function login($mail, $mdp): void
@@ -14,10 +13,9 @@ class authentificationManager extends Manager
         if ($leAbonne->getMdp() == $this->getHashmdp($mdp)) {
             $_SESSION["mail"] = $leAbonne->getAdresseMail();
             $_SESSION["mdp"] = $leAbonne->getMdp();
+            $_SESSION["id"] = $leAbonne->getId();
         }
     }
-
-
 
     private function getHashmdp(string $mdp): string
     {

@@ -38,7 +38,7 @@ class LivreManager extends Manager
             $lesExemplaires = array();
             foreach($r2 as $exemplaire)
             {
-                $lesExemplaires[$exemplaire['numero']] = new Exemplaire($exemplaire['numero'], $lesLivres[$livre['id']] ,$exemplaire['dateAchat'],$lesRayons[$exemplaire['idRayon']],$lesEtats[$exemplaire['idEtat']]);
+                $lesExemplaires[$exemplaire['numero']] = new Exemplaire($lesLivres[$livre['id']], $exemplaire['numero'], $exemplaire['dateAchat'],$lesRayons[$exemplaire['idRayon']],$lesEtats[$exemplaire['idEtat']]);
             }
             // on instancie la collection d'exemplaires dans l'objet livre
             $lesLivres[$livre['id']]->setlesExemplaires($lesExemplaires);
@@ -50,10 +50,10 @@ class LivreManager extends Manager
     /**
      * Renvoie l'objet Livre dont l'id correspond à la valeur du parametre $id
      *
-     * @param integer $id
-     * @return void
+     * @param string $id
+     * @return Livre
      */
-    public function getLivreById(int $id) : Livre // récupère un objet Livre en fonction de son id
+    public function getLivreById(string $id) : Livre // récupère un objet Livre en fonction de son id
     {
         $catalogue = $this->getList();
         return $catalogue[$id];

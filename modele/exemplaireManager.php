@@ -2,8 +2,6 @@
 
 class exemplaireManager extends Manager{
 
-    private array $lesExemplaires;
-
     public function getListByDocument(string $idDoc) : array 
     {
         try{
@@ -24,7 +22,6 @@ class exemplaireManager extends Manager{
                 $lesExemplaires[$unExemplaire['numero']] = new Exemplaire($leDocument[$unExemplaire['idDocument']], $unExemplaire['numero'], $unExemplaire['dateAchat'], $lesRayons[$unExemplaire['idRayon']], $lesEtats[$unExemplaire['idEtat']]);
                 
             }
-            $this->lesExemplaires = $lesExemplaires;
             return $lesExemplaires;
         }
         catch(PDOException $e) {
@@ -34,21 +31,9 @@ class exemplaireManager extends Manager{
     }
 
 
-    public function getExemplaireById(string $numero) : Exemplaire
+    public function getExemplaireById(string $numero, $iddoc) : array 
     {
-        $lesExemplaires = $this->lesExemplaires;
-
-        foreach($lesExemplaires as $unExemplaire)
-       {
-           if($unExemplaire->getLeNumero() == $numero)
-           {
-               $lExemplaire = $unExemplaire;
-
-           }
-       }
-       return $lExemplaire;
-        
-        
+        $lesExemplaires = $this->getListByDocument($iddoc);
     }
     
     

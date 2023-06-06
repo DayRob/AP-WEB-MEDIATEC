@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-horizontal">
                         <div class="img-square-wrapper">
-                            <img class="" src="<?= $unEnprunts->getDocument()->getImage() ?>" alt="<?= $unEnprunts->getDocument()->getTitre() ?>">
+                            <img class="img-fluid" src="<?= $unEnprunts->getDocument()->getImage() ?>" alt="<?= $unEnprunts->getDocument()->getTitre() ?>">
                         </div>
 
                         <div class="card-body">
@@ -55,8 +55,6 @@
                 </div>
             </div>
         </div>
-
-
     <?php
     }
     ?>

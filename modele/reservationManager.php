@@ -16,9 +16,7 @@ class reservationManager extends Manager{
         }    
 
     }   
-    public function getReservationBtAbonne($idAbonne) : void{
-        
-    }
+
 }
     
 

@@ -63,5 +63,6 @@ function chargerModeles($racine)
     require_once("$racine/modele/authentificationManager.php");
     require_once("$racine/modele/emprunt.php");
     require_once("$racine/modele/empruntManager.php");
+    require_once("$racine/modele/reservationManager.php");
     
 }

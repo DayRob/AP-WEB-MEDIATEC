@@ -5,7 +5,7 @@ $titre = "Mon Dossier";
 $donner = new authentificationManager();
 $unAbonne = $donner->infoAbonne();
 $Emprunt = new EmpruntManager();
-
+$Reservation = new reservationManager();
 
 //info user identifier 
 
@@ -21,6 +21,7 @@ $dateExpriation = $unAbonne->getDateExpriation();
 $typeAbonnement = $unAbonne->getTypeAbonnemt();
 $libelleTypeAbonnement = $typeAbonnement->getLibelle();
 $nombreEmrunts = $Emprunt->getNumberEmprunt($_SESSION['id']);
+$nombreReservation = $Reservation->getNumberReservation($_SESSION['id']);
 
 
 /**

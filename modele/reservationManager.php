@@ -32,7 +32,7 @@ class reservationManager extends Manager{
                 $unExemplaire = new exemplaireManager();
                 $unAbonne= $unAbonne->getUtilisateurById($uneReservation['id_abonne']);
                 $unDocument = $unDocument->getDocumentById($uneReservation['id_document']);
-                $unExemplaire = $unExemplaire->getExemplaireById($uneReservation['id_exemplaire']);
+                $unExemplaire = $unExemplaire->getExemplaireById($uneReservation['id_exemplaire'],$uneReservation['id_document']);
                 $reservation = new reservation (
                     $uneReservation['id'],
                     $unAbonne,

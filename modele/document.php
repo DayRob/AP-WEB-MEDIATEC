@@ -14,10 +14,10 @@ class Document {
      * @param integer $id
      * @param string $titre
      * @param string $image
-     * @param boolean $commandeEnCours
+     * @param int $commandeEnCours
      * @param TypePublic $public
      */
-    public function __construct(int $id, string $titre, string $image, bool $commandeEnCours, TypePublic $public)
+    public function __construct(int $id, string $titre, string $image, int $commandeEnCours, TypePublic $public)
     {
         $this->id = $id;
         $this->titre = $titre;

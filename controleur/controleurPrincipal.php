@@ -1,12 +1,14 @@
 <?php
-function controleurPrincipal($action) {
+function controleurPrincipal($action)
+{
     $lesActions = array();
     $lesActions["rechercheSimple"] = "c_rechercheSimple.php";
     $lesActions["rechercheAvancee"] = "c_rechercheAvancee.php";
     $lesActions["nouveautes"] = "c_nouveautes.php";
     $lesActions["faq"] = "c_faq.php";
+    $lesActions["historiqueRecherche"] = "c_historiqueRecherche.php";
 
-    $lesActions["accueil"] = $lesActions["rechercheSimple"] ;
+    $lesActions["accueil"] = $lesActions["rechercheSimple"];
     $lesActions["defaut"] = $lesActions["accueil"];
 
     if (array_key_exists($action, $lesActions)) {
@@ -17,9 +19,11 @@ function controleurPrincipal($action) {
 }
 
 
-function chargerModeles($racine){
+function chargerModeles($racine)
+{
     require_once("$racine/modele/Manager.php");
     require_once("$racine/modele/Document.php");
+    require_once("$racine/modele/DocumentManager.php");
     require_once("$racine/modele/Livre.php");
     require_once("$racine/modele/Dvd.php");
     require_once("$racine/modele/Exemplaire.php");
@@ -34,6 +38,6 @@ function chargerModeles($racine){
     require_once("$racine/modele/RevueManager.php");
     require_once("$racine/modele/TypePublic.php");
     require_once("$racine/modele/TypePublicManager.php");
+    require_once("$racine/modele/historique.php");
+    require_once("$racine/modele/historiqueManager.php");
 }
-?>
-

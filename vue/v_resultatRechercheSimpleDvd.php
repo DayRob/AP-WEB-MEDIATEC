@@ -1,9 +1,9 @@
 <h2>Disques DVD : </h2>
 <div class="container-fluid">
-<?php
-    foreach($disques as $unDvd){
-        ?>
-        
+    <?php
+    foreach ($disques as $unDvd) {
+    ?>
+
         <div class="row">
             <div class="col-12 mt-3">
                 <div class="card">
@@ -13,32 +13,32 @@
                         </div>
                         <div class="card-body">
                             <h4 class="card-title"><?= $unDvd->getSynopsis() ?></h4>
-                            <p class="card-text"><?= $unLivre->getRealisateur() ?></p>
-                            <p class="card-text"><?= $unLivre->getDuree() ?></p>
-                            <p class="card-text"><?= $unLivre->getCollection() ?></p>
+                            <p class="card-text"><?= $unDvd->getRealisateur() ?></p>
+                            <p class="card-text"><?= $unDvd->getDuree() ?></p>
+                            <p class="card-text"><?= $unDvd->getDuree() ?></p>
                         </div>
                     </div>
                     <div class="card-footer">
-                    <?php 
+                        <?php
                         $txtExemplaires = "Aucun exemplaires";
                         $txtRayons = "";
-                        $nbExemplaires = count($unDvd->getLesExemplaires()); 
-                        if ($nbExemplaires>0){
+                        $nbExemplaires = count($unDvd->getLesExemplaires());
+                        if ($nbExemplaires > 0) {
                             $txtRayons = "Rayon";
                             $txtExemplaires = $nbExemplaires . " exemplaire";
                             $finTxt = " : ";
-                            if ($nbExemplaires > 1){
+                            if ($nbExemplaires > 1) {
                                 $finTxt = "s : ";
                             }
                             $txtRayons .= $finTxt;
                             $txtExemplaires .= $finTxt;
-                            
-                            foreach ($unDvd->getLesExemplaires() as $unExemplaire){
+
+                            foreach ($unDvd->getLesExemplaires() as $unExemplaire) {
                                 $txtRayons .= $unExemplaire->getLeRayon() . ", ";
                             }
                             $txtRayons = substr($txtRayons, 0, -2);
-                        }?>
-                        <small class="text-muted"> 
+                        } ?>
+                        <small class="text-muted">
                             <?= $txtExemplaires . " - " . $txtRayons ?>
                         </small>
                     </div>
@@ -49,6 +49,6 @@
 
     <?php
     }
-?>
+    ?>
 
 </div>

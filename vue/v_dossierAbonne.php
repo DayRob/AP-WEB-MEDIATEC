@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="photo" class="rounded-circle" width="150">
                             <div class="mt-3">
                                 <!-- permet d'affichier le nom et le prenom de user connecter -->
                                 <h4><?php echo "$prenom $nom";   ?></h4>
@@ -101,14 +101,14 @@
                     <div class="col-sm-6 mb-3">
                         <div class="card h-100">
                             <div class="card-body">
-                                <h6 class="d-flex align-items-center mb-3">Emprunts en cours : </h6>
+                                <h6 class="d-flex align-items-center mb-3">Emprunts en cours : <?php echo "$nombreEmrunts"?></h6>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6 mb-3">
                         <div class="card h-100">
                             <div class="card-body">
-                                <h6 class="d-flex align-items-center mb-3">Reservation : </h6>
+                                <h6 class="d-flex align-items-center mb-3">Reservation : <?php echo "$nombreReservation"?></h6>
                             </div>
                         </div>
                     </div>

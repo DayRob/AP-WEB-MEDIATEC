@@ -28,7 +28,7 @@ class DvdManager extends Manager
             if ($dvd['commandeEnCours'] == null){
                 $dvd['commandeEnCours'] = false;
             }
-            $lesDvd[$dvd['id']] = new Dvd($dvd['id'], $dvd['titre'], $dvd['image'], $dvd['commandeEnCours'], $lesPublics[$dvd['idPublic']], $dvd['synopsis'], $dvd['realisateur'],$dvd['duree']);
+            $lesDvd[$dvd['id']] = new Dvd($dvd['id'], $dvd['titre'], $dvd['image'], $dvd['commandeEnCours'], $lesPublics[$dvd['idPublic']], $dvd['synopsis'], $dvd['réalisateur'],$dvd['duree']);
 
             // on récupère la colection d'exemplaires de ce livre
             $q2 = $this->getPDO()->prepare('SELECT * FROM exemplaire WHERE idDocument = :id ORDER BY numero');
@@ -38,7 +38,7 @@ class DvdManager extends Manager
             $lesExemplaires = array();
             foreach($r2 as $exemplaire)
             {
-                $lesExemplaires[$exemplaire['numero']] = new Exemplaire($exemplaire['numero'], $lesDvd[$dvd['id']] ,$exemplaire['dateAchat'],$lesRayons[$exemplaire['idRayon']],$lesEtats[$exemplaire['idEtat']]);
+                $lesExemplaires[$exemplaire['numero']] = new Exemplaire( $lesDvd[$dvd['id']] ,$exemplaire['numero'], $exemplaire['dateAchat'],$lesRayons[$exemplaire['idRayon']],$lesEtats[$exemplaire['idEtat']]);
             }
             // on instancie la collection d'exemplaires dans l'objet livre
             $lesDvd[$dvd['id']]->setlesExemplaires($lesExemplaires);
@@ -116,5 +116,3 @@ class DvdManager extends Manager
     }
 
 }
-
-?>

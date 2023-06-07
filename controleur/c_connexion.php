@@ -4,11 +4,29 @@ $titre = "connexion";
 
 $connexion =  new authentificationManager();
 
-// recuperation des donnees GET, POST, et SESSION
+$abonneManager = new abonneManager();
+$lesAbonnes = $abonneManager->getUtilisateur();
+
+// recuperation des donnees  POST
 if (isset($_POST["mail"]) && isset($_POST["mdp"])){
+   
     $mail=$_POST["mail"];
     $mdp=$_POST["mdp"];
-    $connexion->login($mail, $mdp);
+
+    foreach($lesAbonnes as $unAbonne)
+    {
+        
+        if($unAbonne->getAdresseMail() ==  $mail)
+        {
+           
+            $message= "l'adresse email ou le mots de passe est incorect";
+            $connexion->login($mail, $mdp);
+            break;
+        }
+        
+    }
+   
+    
     
 }
 
@@ -17,6 +35,8 @@ if ($connexion->isLoggedOn()){
 }
 else{ // l'utilisateur n'est pas connecté, on affiche le formulaire de connexion
     // appel du script de vue 
+    
+   
     include "$racine/vue/header.php";
     include "$racine/vue/v_connexion.php";
     include "$racine/vue/footer.php";

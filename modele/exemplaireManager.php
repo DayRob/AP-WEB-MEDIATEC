@@ -2,10 +2,6 @@
 
 class exemplaireManager extends Manager{
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 167bf8a70a8a70a73527e14e09558a5d4c5c259c
     public function getListByDocument(string $idDoc) : array 
     {
         try{
@@ -49,7 +45,7 @@ class exemplaireManager extends Manager{
         }
        return $lExemplaire;
        
-        
+            
     }
     
     

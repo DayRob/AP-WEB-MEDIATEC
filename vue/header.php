@@ -21,7 +21,12 @@
 	<script type="text/javascript" src="bib/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="bib/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="bib/js/fonctions.js"></script>
+
 	<script type="text/javascript" src="../js.js"></script>
+
+	<script type="text/javascript" src="JavaScript/fonction.js"></script>
+	<script type="text/javascript" src="JavaScript/main.js"></script>
+
 
 </head>
 

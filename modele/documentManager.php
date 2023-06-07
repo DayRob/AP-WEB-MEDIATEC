@@ -1,5 +1,6 @@
 <?php
 
+
 class DocumentManager extends Manager
 {
     /**
@@ -7,6 +8,7 @@ class DocumentManager extends Manager
      *
      * @return array
      */
+
     public function getList(): array
     {
         // recupération des types de public
@@ -144,4 +146,42 @@ class DocumentManager extends Manager
         }
         return $this->getDocumentByListId($lesCollections);
     }
+
+    public function getList() : array
+    {
+        $livreManager = new LivreManager();
+        $lesLivres = $livreManager->getList();
+
+        $DvdManager = new DvdManager();
+        $lesDvds = $DvdManager->getList();
+
+        $lesDocuments = array_merge($lesLivres,$lesDvds);
+
+        return $lesDocuments;
+    }
+
+    
+    public function getDocumentById(string $idDocument)
+    {
+       
+       $livreManager = new LivreManager();
+       $lesLivres = $livreManager->getList();
+       $DvdManager = new DvdManager();
+       $lesDvds = $DvdManager->getList();
+       $lesDocuments = array_merge($lesLivres,$lesDvds);
+       foreach($lesDocuments as $unDocument)
+       {            
+           if($unDocument->getId() == $idDocument)
+           {
+               $leDocument = $unDocument;
+
+           }   
+       }
+       return $leDocument;
+    }
 }
+
+?>
+
+
+

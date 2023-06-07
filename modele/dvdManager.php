@@ -38,7 +38,7 @@ class DvdManager extends Manager
             $lesExemplaires = array();
             foreach($r2 as $exemplaire)
             {
-                $lesExemplaires[$exemplaire['numero']] = new Exemplaire($exemplaire['numero'], $lesDvd[$dvd['id']] ,$exemplaire['dateAchat'],$lesRayons[$exemplaire['idRayon']],$lesEtats[$exemplaire['idEtat']]);
+                $lesExemplaires[$exemplaire['numero']] = new Exemplaire( $lesDvd[$dvd['id']] ,$exemplaire['numero'], $exemplaire['dateAchat'],$lesRayons[$exemplaire['idRayon']],$lesEtats[$exemplaire['idEtat']]);
             }
             // on instancie la collection d'exemplaires dans l'objet livre
             $lesDvd[$dvd['id']]->setlesExemplaires($lesExemplaires);

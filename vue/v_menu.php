@@ -23,21 +23,38 @@
           <a class="nav-link" href="./?action=faq">FAQ</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dossier d'abonné
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Mon dossier</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Mes prêts en cours</a>
-            <a class="dropdown-item" href="#">Mes réservations</a>
-            <a class="dropdown-item" href="#">Mes frais</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Historique des prêts</a>
-            <a class="dropdown-item" href="./?action=historiqueRecherche">Historique de recherche</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Deconnexion</a>
-          </div>
+          <?php
+          $connexion = new authentificationManager();
+
+          if (!$connexion->isLoggedOn()) { ?>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dossier d'abonné
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="./?action=connexion">Mon dossier</a>
+
+            <?php } else { ?>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <?php $unAbonne = $connexion->infoAbonne();
+                $prenom = $unAbonne->getPrenom();
+                echo ("$prenom"); ?>
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="./?action=dossierAbonne">Mon dossier</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="./?action=reservation">Mes réservations</a>
+                <a class="dropdown-item" href="./?action=emprunt">Mes prêts en cours</a>
+                <a class="dropdown-item" href="#">Mes frais</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Historique des prêts</a>
+                 <a class="dropdown-item" href="./?action=historiqueRecherche">Historique de recherche</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="./?action=deconnexion">Deconnexion</a>
+              <?php } ?>
+
+
+              </div>
         </li>
 
 

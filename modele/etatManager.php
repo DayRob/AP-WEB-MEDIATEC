@@ -22,6 +22,18 @@ class EtatManager extends Manager
         return $lesEtats;
     }
 
+    public function getEtatByExemplaire(int $id, int $doc) : Etat {
+        $q = $this->getPDO()->prepare('SELECT * FROM `etat` JOIN exemplaire ON exemplaire.idEtat = etat.id WHERE exemplaire.numero = :num AND exemplaire.idDocument = :idDoc ');
+        $q->bindParam(':num', $id, PDO::PARAM_INT);
+        $q->bindParam(':idDoc', $doc, PDO::PARAM_INT);
+        $q->execute();
+
+        $unEtat = $q->fetch(PDO::FETCH_ASSOC);
+        $etat = new Etat ($unEtat['id'], $unEtat['libelle']);
+        return $etat;
+
+    }   
+
 }
 
 ?>

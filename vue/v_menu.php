@@ -23,8 +23,6 @@
           <a class="nav-link" href="./?action=faq">FAQ</a>
         </li>
         <li class="nav-item dropdown">
-
-
           <?php
           $connexion = new authentificationManager();
 
@@ -50,7 +48,7 @@
                 <a class="dropdown-item" href="#">Mes frais</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Historique des prêts</a>
-                <a class="dropdown-item" href="#">Historique de recherche</a>
+                 <a class="dropdown-item" href="./?action=historiqueRecherche">Historique de recherche</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="./?action=deconnexion">Deconnexion</a>
               <?php } ?>

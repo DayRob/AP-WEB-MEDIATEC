@@ -17,6 +17,7 @@ function controleurPrincipal($action)
         $lesActions["modale"] = "controleurModale.php";
         $lesActions["defaut"] = $lesActions["accueil"];
         $lesActions["emprunt"] = "c_emprunt.php";
+        $lesActions["historiqueRecherche"] = "c_historiqueRecherche.php";
     } else {
         $lesActions["rechercheSimple"] = "c_rechercheSimple.php";
         $lesActions["rechercheAvancee"] = "c_rechercheAvancee.php";
@@ -27,7 +28,6 @@ function controleurPrincipal($action)
 
         $lesActions["accueil"] = $lesActions["rechercheSimple"];
         $lesActions["defaut"] = $lesActions["accueil"];
-
         $lesActions["connexion"] = "c_connexion.php";
     }
     if (array_key_exists($action, $lesActions)) {
@@ -36,6 +36,7 @@ function controleurPrincipal($action)
         return $lesActions["defaut"];
     }
 }
+
 function chargerModeles($racine)
 {
     require_once("$racine/modele/Manager.php");
@@ -56,6 +57,8 @@ function chargerModeles($racine)
     require_once("$racine/modele/RevueManager.php");
     require_once("$racine/modele/TypePublic.php");
     require_once("$racine/modele/TypePublicManager.php");
+    require_once("$racine/modele/historique.php");
+    require_once("$racine/modele/historiqueManager.php");
     require_once("$racine/modele/abonne.php");
     require_once("$racine/modele/abonneManager.php");
     require_once("$racine/modele/TypeAbonement.php");

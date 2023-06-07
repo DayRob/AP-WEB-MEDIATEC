@@ -9,24 +9,24 @@ class DocumentManager extends Manager
      * @return array
      */
 
-    public function getList(): array
-    {
-        // recupération des types de public
-        $typePublicManager = new TypePublicManager(); // Création d'un objet manager de type de public
-        $lesPublics = $typePublicManager->getList(); // chargement du dictionnaire des types de public
+    // public function getList(): array
+    // {
+    //     // recupération des types de public
+    //     $typePublicManager = new TypePublicManager(); // Création d'un objet manager de type de public
+    //     $lesPublics = $typePublicManager->getList(); // chargement du dictionnaire des types de public
 
-        $q = $this->getPDO()->prepare('SELECT * FROM document ORDER BY titre');
-        $q->execute();
-        $r1 = $q->fetchAll(PDO::FETCH_ASSOC);
+    //     $q = $this->getPDO()->prepare('SELECT * FROM document ORDER BY titre');
+    //     $q->execute();
+    //     $r1 = $q->fetchAll(PDO::FETCH_ASSOC);
 
-        $lesDocuments = array();
-        foreach ($r1 as $doc) {
+    //     $lesDocuments = array();
+    //     foreach ($r1 as $doc) {
 
 
-            $lesDocuments[$doc['id']] = new Document($doc['id'], $doc['titre'], $doc['image'], $doc['commandeEnCours'], $lesPublics[$doc['idPublic']]);
-        }
-        return $lesDocuments;
-    }
+    //         $lesDocuments[$doc['id']] = new Document($doc['id'], $doc['titre'], $doc['image'], $doc['commandeEnCours'], $lesPublics[$doc['idPublic']]);
+    //     }
+    //     return $lesDocuments;
+    // }
 
     /**
      * Renvoie un tableau associatif contenant l'ensemble des objets Document dont les identifiants appartienent au tableau d'entier $listeId

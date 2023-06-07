@@ -29,8 +29,8 @@ if (isset($_POST['recherche'])) {
     $sujetCombinaison = htmlentities($_POST['sujetCombinaison']);
     $collectionCombinaison = htmlentities($_POST['collectionCombinaison']);
 
-    // $documentManager = new DocumentManager();
-    // $lesDocs = $documentManager->getList();
+    // $DocumentManager = new DocumentManager();
+    // $lesDocs = $DocumentManager->getList();
     $livreManager = new livreManager();
     $lesLivres = $livreManager->getList();
     $dvdManager = new DvdManager();
@@ -38,67 +38,67 @@ if (isset($_POST['recherche'])) {
 
 
     if ($titreSearchType == "tout") {
-        $documentManager = new documentManager();
-        $lesDocsTitre = $documentManager->getlist();
+        $DocumentManager = new DocumentManager();
+        $lesDocsTitre = $DocumentManager->getlist();
     } else {
-        $documentManager = new documentManager();
-        $lesDocsTitre = $documentManager->getDocumentByTitre($textTitre);
+        $DocumentManager = new DocumentManager();
+        $lesDocsTitre = $DocumentManager->getDocumentByTitre($textTitre);
     }
 
     if ($auteurSearchType == "tout") {
-        $documentManager = new documentManager();
-        $lesDocsAuteur = $documentManager->getlist();
+        $DocumentManager = new DocumentManager();
+        $lesDocsAuteur = $DocumentManager->getlist();
     } else {
-        $documentManager = new documentManager();
-        $lesDocsAuteur = $documentManager->getDocumentByAuteur($textAuteur);
+        $DocumentManager = new DocumentManager();
+        $lesDocsAuteur = $DocumentManager->getDocumentByAuteur($textAuteur);
     }
 
     if ($sujetSearchType == "tout") {
-        $documentManager = new documentManager();
-        $lesDocsSujet = $documentManager->getlist();
+        $DocumentManager = new DocumentManager();
+        $lesDocsSujet = $DocumentManager->getlist();
     } else {
-        $documentManager = new documentManager();
-        $lesDocsSujet = $documentManager->getDocumentByPublic($textSujet);
+        $DocumentManager = new DocumentManager();
+        $lesDocsSujet = $DocumentManager->getDocumentByPublic($textSujet);
     }
 
     if ($collectionSearchType == "tout") {
-        $documentManager = new documentManager();
-        $lesDocsCollection = $documentManager->getlist();
+        $DocumentManager = new DocumentManager();
+        $lesDocsCollection = $DocumentManager->getlist();
     } else {
-        $documentManager = new documentManager();
-        $lesDocsCollection = $documentManager->getDocumentByCollection($textCollection);
+        $DocumentManager = new DocumentManager();
+        $lesDocsCollection = $DocumentManager->getDocumentByCollection($textCollection);
     }
 
     // if ($textTitre == NULL) {
-    //     $documentManager = new documentManager();
-    //     $lesDocTitre = $documentManager->getlist();
+    //     $DocumentManager = new DocumentManager();
+    //     $lesDocTitre = $DocumentManager->getlist();
     // } else {
-    //     $documentManager = new documentManager();
-    //     $lesDocTitre = $documentManager->getDocumentByTitre($textTitre);
+    //     $DocumentManager = new DocumentManager();
+    //     $lesDocTitre = $DocumentManager->getDocumentByTitre($textTitre);
     // }
 
     // if ($textAuteur == NULL) {
-    //     $documentManager = new documentManager();
-    //     $lesDocAuteur = $documentManager->getlist();
+    //     $DocumentManager = new DocumentManager();
+    //     $lesDocAuteur = $DocumentManager->getlist();
     // } else {
-    //     $documentManager = new documentManager();
-    //     $lesDocAuteur = $documentManager->getDocumentByAuteur($textAuteur);
+    //     $DocumentManager = new DocumentManager();
+    //     $lesDocAuteur = $DocumentManager->getDocumentByAuteur($textAuteur);
     // }
 
     // if ($textSujet == NULL) {
-    //     $documentManager = new documentManager();
-    //     $lesDocSujet = $documentManager->getlist();
+    //     $DocumentManager = new DocumentManager();
+    //     $lesDocSujet = $DocumentManager->getlist();
     // } else {
-    //     $documentManager = new documentManager();
-    //     $lesDocSujet = $documentManager->getDocumentByPublic($textSujet);
+    //     $DocumentManager = new DocumentManager();
+    //     $lesDocSujet = $DocumentManager->getDocumentByPublic($textSujet);
     // }
 
     // if ($textCollection == NULL) {
-    //     $documentManager = new documentManager();
-    //     $lesDocsCollection = $documentManager->getlist();
+    //     $DocumentManager = new DocumentManager();
+    //     $lesDocsCollection = $DocumentManager->getlist();
     // } else {
-    //     $documentManager = new documentManager();
-    //     $lesDocsCollection = $documentManager->getDocumentByCollection($textCollection);
+    //     $DocumentManager = new DocumentManager();
+    //     $lesDocsCollection = $DocumentManager->getDocumentByCollection($textCollection);
     // }
 
 

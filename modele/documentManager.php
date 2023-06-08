@@ -147,6 +147,11 @@ class DocumentManager extends Manager
         return $this->getDocumentByListId($lesCollections);
     }
 
+    /**
+     * r'envoie un tableau de tout les documents
+     *
+     * @return array
+     */
     public function getList() : array
     {
         $livreManager = new LivreManager();
@@ -161,7 +166,13 @@ class DocumentManager extends Manager
     }
 
     
-    public function getDocumentById(string $idDocument)
+    /**
+     * renvoie un document pa rapport a son id 
+     *
+     * @param string $idDocument
+     * @return Document
+     */
+    public function getDocumentById(string $idDocument) : Document
     {
        
        $livreManager = new LivreManager();

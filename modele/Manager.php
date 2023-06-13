@@ -12,7 +12,7 @@ class Manager
     {
         $login = "root";
         $mdp = "";
-        $bd = "mediateq-web1";
+        $bd = "mediateq-web";
         $serveur = "localhost";
 
         try

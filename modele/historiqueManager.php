@@ -7,33 +7,52 @@ class HistoriqueManager extends Manager
      *
      * @return array
      */
-    public function getList(): array
+    public function getList()
     {
-        $q = $this->getPDO()->prepare('SELECT * FROM historique ORDER BY libelle');
-        $q->execute();
-        $r1 = $q->fetchAll(PDO::FETCH_ASSOC);
+        try {
+            $q = $this->getPDO()->prepare('SELECT * FROM historique');
+            $q->execute();
 
-        $lesHistoriques = array();
-        foreach ($r1 as $historique) {
+            $results = $q->fetchAll(PDO::FETCH_ASSOC);
 
+            // Convertir chaque ligne en objet historique
+            $historiques = [];
+            foreach ($results as $row) {
 
-            $lesHistoriques[$historique['id']] = new Historique($historique['id'], $historique['libelle'], $historique['date'], $historique['nbResultat'], $historique['requete']);
+                $historique = new historique($row['id'], $row['libelle'], $row['date'], $row['nbResultat'], $row['requete']);
+
+                $historiques[] = $historique;
+            }
+            return $historiques;
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
         }
-        return $lesHistoriques;
     }
 
+
+
+
+    /**
+     * créer un enregistrement dans la table historique
+     *
+     * @param string $libelle
+     * @param int $nbResultat
+     * @param string $requete
+     * @return void
+     */
     public function creerHistorique($libelle, $nbResultat, $requete): void
     {
         try {
-            $q = $this->getPDO()->prepare('INSERT INTO historique(libelle, datee, nbResultat, requete) VALUES(:libelle, NOW(), :nbResultat, :requete)');
+            $q = $this->getPDO()->prepare('INSERT INTO historique(libelle, nbResultat, requete) VALUES(:libelle, :nbResultat, :requete)');
 
             $q->bindParam(':libelle', $libelle, PDO::PARAM_STR);
-            $q->bindParam(':datee', $date, PDO::PARAM_STR);
             $q->bindParam(':nbResultat', $nbResultat, PDO::PARAM_STR);
             $q->bindParam(':requete', $requete, PDO::PARAM_STR);
+
             $q->execute();
         } catch (PDOException $e) {
-            print "Erreur !:" . $e->getMessage();
+            print "Erreur !: " . $e->getMessage();
             die();
         }
     }

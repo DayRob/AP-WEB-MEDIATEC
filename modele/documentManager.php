@@ -51,17 +51,20 @@ class DocumentManager extends Manager
      * @param string $titre
      * @return void
      */
-    public function getDocumentByTitre(string $titre): array
+    public function getDocumentByTitre(string $titre, string &$sql): array
     {
         $q = $this->getPDO()->prepare('SELECT id FROM document WHERE titre LIKE :titre');
         $q->bindValue(':titre',  "%" . $titre . "%", PDO::PARAM_STR);
         $q->execute();
+        $sql = "SELECT id FROM document WHERE titre LIKE '%" . $titre . "%'";
         //$q->debugDumpParams();
         $r = $q->fetchAll(PDO::FETCH_ASSOC);
         $lesId = array();
         foreach ($r as $doc) {
             array_push($lesId, $doc['id']);
         }
+
+
         return $this->getDocumentByListId($lesId);
     }
 
@@ -71,11 +74,12 @@ class DocumentManager extends Manager
      * @param string $auteur
      * @return void
      */
-    public function getDocumentByAuteur(string $auteur): array
+    public function getDocumentByAuteur(string $auteur, string &$sql): array
     {
         $q = $this->getPDO()->prepare('SELECT idDocument FROM livre WHERE auteur LIKE :auteur');
         $q->bindValue(':auteur',  "%" . $auteur . "%", PDO::PARAM_STR);
         $q->execute();
+        $sql = "SELECT idDocument FROM livre WHERE auteur LIKE '%" . $auteur . "%'";
         //$q->debugDumpParams();
         $r = $q->fetchAll(PDO::FETCH_ASSOC);
         $lesId = array();
@@ -92,11 +96,12 @@ class DocumentManager extends Manager
      * @param string $descripteur
      * @return void
      */
-    public function getDocumentBySujet(string $descripteur): array
+    public function getDocumentBySujet(string $descripteur, string &$sql): array
     {
-        $q = $this->getPDO()->prepare('SELECT id FROM descripteur WHERE libelle = :descripteur');
+        $q = $this->getPDO()->prepare('SELECT d.id FROM document d JOIN est_décrit_par_2 ed ON d.id = ed.idDocument JOIN descripteur de ON ed.idDescripteur = de.id WHERE de.libelle LIKE = :descripteur');
         $q->bindValue(':descripteur',  "%" . $descripteur . "%", PDO::PARAM_STR);
         $q->execute();
+        $sql = "SELECT d.id FROM document d JOIN est_décrit_par_2 ed ON d.id = ed.idDocument JOIN descripteur de ON ed.idDescripteur = de.id WHERE de.libelle LIKE '%" . $descripteur . "%'";
         //$q->debugDumpParams();
         $r = $q->fetchAll(PDO::FETCH_ASSOC);
         $lesId = array();
@@ -133,11 +138,13 @@ class DocumentManager extends Manager
      * @param string $uneCollection
      * @return void
      */
-    public function getDocumentByCollection(string $uneCollection): array
+    public function getDocumentByCollection(string $uneCollection, string &$sql): array
     {
         $q = $this->getPDO()->prepare('SELECT idDocument FROM livre WHERE collection LIKE :uneCollection');
         $q->bindValue(':uneCollection',  "%" . $uneCollection . "%", PDO::PARAM_STR);
         $q->execute();
+        $sql = "SELECT idDocument FROM livre WHERE collection LIKE '%" . $uneCollection . "%'";
+
         //$q->debugDumpParams();
         $r = $q->fetchAll(PDO::FETCH_ASSOC);
         $lesCollections = array();
@@ -147,7 +154,7 @@ class DocumentManager extends Manager
         return $this->getDocumentByListId($lesCollections);
     }
 
-    public function getList() : array
+    public function getList(): array
     {
         $livreManager = new LivreManager();
         $lesLivres = $livreManager->getList();
@@ -155,33 +162,27 @@ class DocumentManager extends Manager
         $DvdManager = new DvdManager();
         $lesDvds = $DvdManager->getList();
 
-        $lesDocuments = array_merge($lesLivres,$lesDvds);
+        $lesDocuments = array_merge($lesLivres, $lesDvds);
 
         return $lesDocuments;
     }
 
-    
+
+
+
     public function getDocumentById(string $idDocument)
     {
-       
-       $livreManager = new LivreManager();
-       $lesLivres = $livreManager->getList();
-       $DvdManager = new DvdManager();
-       $lesDvds = $DvdManager->getList();
-       $lesDocuments = array_merge($lesLivres,$lesDvds);
-       foreach($lesDocuments as $unDocument)
-       {            
-           if($unDocument->getId() == $idDocument)
-           {
-               $leDocument = $unDocument;
 
-           }   
-       }
-       return $leDocument;
+        $livreManager = new LivreManager();
+        $lesLivres = $livreManager->getList();
+        $DvdManager = new DvdManager();
+        $lesDvds = $DvdManager->getList();
+        $lesDocuments = array_merge($lesLivres, $lesDvds);
+        foreach ($lesDocuments as $unDocument) {
+            if ($unDocument->getId() == $idDocument) {
+                $leDocument = $unDocument;
+            }
+        }
+        return $leDocument;
     }
 }
-
-?>
-
-
-

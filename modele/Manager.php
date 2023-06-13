@@ -12,7 +12,7 @@ class Manager
     {
         $login = "root";
         $mdp = "";
-        $bd = "mediateq-web";
+        $bd = "mediateq-web1";
         $serveur = "localhost";
 
         try
@@ -43,5 +43,3 @@ class Manager
     }
     
 }
-
-?>

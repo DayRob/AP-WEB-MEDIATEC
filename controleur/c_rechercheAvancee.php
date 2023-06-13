@@ -7,6 +7,7 @@ $lesDocs = array();
 $lesDocsDebut = array();
 $lesDocsFin = array();
 $lesDocsFin2 = array();
+$lesHistoriques = array();
 $lesDocsFin3 = array();
 $lesLivres = array();
 $lesDvd = array(); // tableau des vues à appeler
@@ -14,6 +15,7 @@ $lesDvd = array(); // tableau des vues à appeler
 
 
 if (isset($_POST['recherche'])) {
+
 
     $textTitre = htmlentities($_POST['textTitre']);
     $textAuteur = htmlentities($_POST['textAuteur']);
@@ -35,22 +37,27 @@ if (isset($_POST['recherche'])) {
     $lesLivres = $livreManager->getList();
     $dvdManager = new DvdManager();
     $lesDvd = $dvdManager->getList();
+    $requete = "";
+
 
 
     if ($titreSearchType == "tout") {
+        $requeteTitre = "";
         $DocumentManager = new DocumentManager();
         $lesDocsTitre = $DocumentManager->getlist();
     } else {
+        $requeteTitre = "";
         $DocumentManager = new DocumentManager();
-        $lesDocsTitre = $DocumentManager->getDocumentByTitre($textTitre);
+        $lesDocsTitre = $DocumentManager->getDocumentByTitre($textTitre, $requeteTitre);
     }
 
     if ($auteurSearchType == "tout") {
         $DocumentManager = new DocumentManager();
         $lesDocsAuteur = $DocumentManager->getlist();
     } else {
+        $requeteAuteur = "";
         $DocumentManager = new DocumentManager();
-        $lesDocsAuteur = $DocumentManager->getDocumentByAuteur($textAuteur);
+        $lesDocsAuteur = $DocumentManager->getDocumentByAuteur($textAuteur, $requeteAuteur);
     }
 
     if ($sujetSearchType == "tout") {
@@ -58,7 +65,7 @@ if (isset($_POST['recherche'])) {
         $lesDocsSujet = $DocumentManager->getlist();
     } else {
         $DocumentManager = new DocumentManager();
-        $lesDocsSujet = $DocumentManager->getDocumentByPublic($textSujet);
+        $lesDocsSujet = $DocumentManager->getDocumentByPublic($textSujet, $requeteSujet);
     }
 
     if ($collectionSearchType == "tout") {
@@ -66,87 +73,144 @@ if (isset($_POST['recherche'])) {
         $lesDocsCollection = $DocumentManager->getlist();
     } else {
         $DocumentManager = new DocumentManager();
-        $lesDocsCollection = $DocumentManager->getDocumentByCollection($textCollection);
+        $lesDocsCollection = $DocumentManager->getDocumentByCollection($textCollection, $requeteCollection);
     }
 
-    // if ($textTitre == NULL) {
-    //     $DocumentManager = new DocumentManager();
-    //     $lesDocTitre = $DocumentManager->getlist();
-    // } else {
-    //     $DocumentManager = new DocumentManager();
-    //     $lesDocTitre = $DocumentManager->getDocumentByTitre($textTitre);
-    // }
-
-    // if ($textAuteur == NULL) {
-    //     $DocumentManager = new DocumentManager();
-    //     $lesDocAuteur = $DocumentManager->getlist();
-    // } else {
-    //     $DocumentManager = new DocumentManager();
-    //     $lesDocAuteur = $DocumentManager->getDocumentByAuteur($textAuteur);
-    // }
-
-    // if ($textSujet == NULL) {
-    //     $DocumentManager = new DocumentManager();
-    //     $lesDocSujet = $DocumentManager->getlist();
-    // } else {
-    //     $DocumentManager = new DocumentManager();
-    //     $lesDocSujet = $DocumentManager->getDocumentByPublic($textSujet);
-    // }
-
-    // if ($textCollection == NULL) {
-    //     $DocumentManager = new DocumentManager();
-    //     $lesDocsCollection = $DocumentManager->getlist();
-    // } else {
-    //     $DocumentManager = new DocumentManager();
-    //     $lesDocsCollection = $DocumentManager->getDocumentByCollection($textCollection);
-    // }
-
+    if ($textTitre != NULL && $textAuteur == NULL && $textCollection == NULL && $textSujet == NULL) {
+        $requete = $requeteTitre;
+    }
 
     switch ($auteurCombinaison) {
+
         case "et":
-            $lesDocsDebut = array_intersect_key($lesDocsTitre, $lesDocsAuteur);
-            break;
+            if ($textAuteur == NULL) {
+                $lesDocsDebut = array_intersect_key($lesDocsTitre, $lesDocsAuteur);
+                // $requete = $requeteTitre;
+                break;
+            } else if ($textTitre == NULL && $textCollection == NULL && $textSujet == NULL && $textAuteur != NULL) {
+                $lesDocsDebut = array_intersect_key($lesDocsTitre, $lesDocsAuteur);
+                $requete = $requeteAuteur;
+                break;
+            } else {
+                $lesDocsDebut = array_intersect_key($lesDocsTitre, $lesDocsAuteur);
+                $requete = $requeteTitre . " INTERSECT " . $requeteAuteur;
+            }
+
 
         case "ou":
-            $lesDocsDebut = array_merge($lesDocsTitre, $lesDocsAuteur);
-            break;
+            if ($textAuteur == NULL) {
+                $lesDocsDebut = array_merge($lesDocsTitre, $lesDocsAuteur);
+                break;
+            } else if ($textTitre == NULL && $textCollection == NULL && $textSujet == NULL && $textAuteur != NULL) {
+                $lesDocsDebut = array_merge($lesDocsTitre, $lesDocsAuteur);
+                $requete = $requeteAuteur;
+                break;
+            } else {
+                $lesDocsDebut = array_merge($lesDocsTitre, $lesDocsAuteur);
+                $requete = $requeteTitre . " UNION " . $requeteAuteur;
+            }
 
         case "sauf":
-            $lesDocsDebut = array_diff_key($lesDocsTitre, $lesDocsAuteur);
+            if ($textAuteur == NULL) {
+                $lesDocsDebut = array_diff_key($lesDocsTitre, $lesDocsAuteur);
+            } else if ($textTitre == NULL && $textCollection == NULL && $textSujet == NULL && $textAuteur != NULL) {
+                $lesDocsDebut = array_diff_key($lesDocsTitre, $lesDocsAuteur);
+                $requete = $requeteAuteur;
+            } else {
+                $lesDocsDebut = array_diff_key($lesDocsTitre, $lesDocsAuteur);
+                $requete = $requeteTitre . " MINUS " . $requeteAuteur;
+            }
     }
+
 
 
     switch ($sujetCombinaison) {
         case "et":
-            $lesDocsFin = array_intersect_key($lesDocsDebut, $lesDocsSujet);
-            break;
+            if ($textSujet == NULL) {
+                $lesDocsFin = array_intersect_key($lesDocsDebut, $lesDocsSujet);
+                break;
+            } else if ($textAuteur == NULL && $textTitre == NULL && $textCollection == NULL && $textSujet != NULL) {
+                $lesDocsFin = array_intersect_key($lesDocsDebut, $lesDocsSujet);
+                $requete = $requeteSujet;
+                break;
+            } else {
+                $lesDocsFin = array_intersect_key($lesDocsDebut, $lesDocsSujet);
+                $requete = $requete . "INTERSECT" . $requeteSujet;
+            }
 
         case "ou":
-            $lesDocsFin = array_merge($lesDocsDebut, $lesDocsSujet);
-            break;
+            if ($textSujet == NULL) {
+                $lesDocsFin = array_merge($lesDocsDebut, $lesDocsSujet);
+                break;
+            } else if ($textAuteur == NULL && $textTitre == NULL && $textCollection == NULL && $textSujet != NULL) {
+                $lesDocsFin = array_merge($lesDocsDebut, $lesDocsSujet);
+                $requete = $requeteSujet;
+                break;
+            } else {
+                $lesDocsFin = array_merge($lesDocsDebut, $lesDocsSujet);
+                $requete = $requete . "UNION" . $requeteSujet;
+            }
 
         case "sauf":
-            $lesDocsFin = array_diff_key($lesDocsDebut, $lesDocsSujet);
+            if ($textSujet == NULL) {
+                $lesDocsFin = array_diff_key($lesDocsDebut, $lesDocsSujet);
+            } else if ($textAuteur == NULL && $textTitre == NULL && $textCollection == NULL && $textSujet != NULL) {
+                $lesDocsFin = array_diff_key($lesDocsDebut, $lesDocsSujet);
+                $requete = $requeteSujet;
+            } else {
+                $lesDocsFin = array_diff_key($lesDocsDebut, $lesDocsSujet);
+                $requete = $requete . "MINUS" . $requeteSujet;
+            }
     }
 
     switch ($collectionCombinaison) {
         case "et":
-            $lesDocsFin2 = array_intersect_key($lesDocsFin, $lesDocsCollection);
-            break;
+            if ($textCollection == NULL && $textSujet == NULL) {
+                $lesDocsFin2 = array_intersect_key($lesDocsFin, $lesDocsCollection);
+                break;
+            } else if ($textAuteur == NULL && $textSujet == NULL && $textTitre == NULL && $textCollection != NULL) {
+                $lesDocsFin2 = array_intersect_key($lesDocsFin, $lesDocsCollection);
+                $requete = $requeteCollection;
+                break;
+            } else {
+                $lesDocsFin2 = array_intersect_key($lesDocsFin, $lesDocsCollection);
+                $requete = $requete . "INTERSECT" . $requeteCollection;
+            }
 
         case "ou":
-            $lesDocsFin2 = array_merge($lesDocsFin, $lesDocsCollection);
-            break;
+            if ($textCollection == NULL) {
+                $lesDocsFin2 = array_merge($lesDocsFin, $lesDocsCollection);
+                break;
+            } else if ($textAuteur == NULL && $textSujet == NULL && $textTitre == NULL && $textCollection != NULL) {
+                $lesDocsFin2 = array_merge($lesDocsFin, $lesDocsCollection);
+                $requete = $requeteCollection;
+                break;
+            } else {
+                $lesDocsFin2 = array_merge($lesDocsFin, $lesDocsCollection);
+                $requete = $requete . "UNION" . $requeteCollection;
+            }
+
 
         case "sauf":
-            $lesDocsFin2 = array_diff_key($lesDocsFin, $lesDocsCollection);
+            if ($textCollection == NULL) {
+                $lesDocsFin2 = array_diff_key($lesDocsFin, $lesDocsCollection);
+            } else if ($textAuteur == NULL && $textSujet == NULL && $textTitre == NULL && $textCollection != NULL) {
+                $lesDocsFin2 = array_diff_key($lesDocsFin, $lesDocsCollection);
+                $requete = $requeteCollection;
+            } else {
+                $lesDocsFin2 = array_diff_key($lesDocsFin, $lesDocsCollection);
+                $requete = $requete . "MINUS" . $requeteCollection;
+            }
     }
 
-    $total = var_dump(count($lesDocsFin2));
 
+    $total = 1;
+    $libelle = $textTitre . "; " . $textAuteur . "; " . $textCollection . "; " . $textSujet . "; ";
 
     $historiqueManager = new historiqueManager();
-    $historiqueManager = $historiqueManager->creerHistorique($textTitre, $total, $requete);
+    $historiqueManager = $historiqueManager->creerHistorique($libelle, $total, $requete);
+    $historiqueManager2 = new historiqueManager();
+    $lesHistoriques = $historiqueManager2->getList();
 
     array_push($vues, "$racine/vue/v_resultatRechercheAvancee.php");
 } else {

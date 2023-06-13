@@ -13,10 +13,11 @@ class Historique
      *
      * @param integer $id
      * @param string $libelle
-     * @param DateTime $date
+     * @param string $date
      * @param integer $nbResultat
+     * @param string $requete
      */
-    public function __construct(int $id, string $libelle, DateTime $date, int $nbResultat, string $requete)
+    public function __construct(int $id, string $libelle, string $date, int $nbResultat, string $requete)
     {
         $this->id = $id;
         $this->libelle = $libelle;
@@ -50,7 +51,7 @@ class Historique
      *
      * @return string
      */
-    public function getDate(): DateTime
+    public function getDate(): string
     {
         return $this->date;
     }
@@ -64,6 +65,50 @@ class Historique
     public function setId(int $id): void
     {
         $this->id = $id;
+    }
+
+    /**
+     * Mutateur de la propriété libelle
+     *
+     * @param string $libelle
+     * @return void
+     */
+    public function setLibelle(string $libelle): void
+    {
+        $this->libelle = $libelle;
+    }
+
+    /**
+     * Mutateur de la propriété date
+     *
+     * @param string $date
+     * @return void
+     */
+    public function setDate(string $date): void
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * Mutateur de la propriété nbResultat
+     *
+     * @param integer $nbResultat
+     * @return void
+     */
+    public function setNbResultat(int $nbResultat): void
+    {
+        $this->nbResultat = $nbResultat;
+    }
+
+    /**
+     * Mutateur de la propriété requete
+     *
+     * @param string $requete
+     * @return void
+     */
+    public function setRequete(string $requete): void
+    {
+        $this->requete = $requete;
     }
 
 

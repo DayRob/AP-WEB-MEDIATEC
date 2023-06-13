@@ -5,7 +5,7 @@ class exemplaireManager extends Manager{
     public function getListByDocument(string $idDoc) : array 
     {
         try{
-            $document = new documentManager();
+            $document = new DocumentManager();
             $leDocument = $document->getList();
             $etatManager = new EtatManager(); // Création d'un objet manager d'état
             $lesEtats = $etatManager->getList(); // chargement du dictionnaire des états
@@ -45,7 +45,7 @@ class exemplaireManager extends Manager{
         }
        return $lExemplaire;
        
-        
+            
     }
     
     

@@ -71,4 +71,3 @@ Vous pouvez maintenant accéder au informations des livres des dvd et des revus 
 Elle vous permet de réserver un exemplaire disponible d’un document en fonction de son état. Une fois la réservation prise en compte, il est possible de voir le nombre de réservation pour votre compte depuis l’espace utilisateur.
 
 
-## Aide-mémoire :

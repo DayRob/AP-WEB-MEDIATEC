@@ -8,7 +8,8 @@ foreach ($disques as $unDvd) {
 <div class="container-fluid">
     <?php
     foreach ($disques as $unDvd) {
-        ?>
+    ?>
+
 
         <div class="row">
             <div class="col-12 mt-3">
@@ -30,7 +31,6 @@ foreach ($disques as $unDvd) {
                             <p class="card-text">
                             <strong>Durée : </strong><?= $unDvd->getDuree() ?> min<br>
                             </p>
-                            
                         </div>
                     </div>
                     <div class="card-footer">
@@ -55,7 +55,6 @@ foreach ($disques as $unDvd) {
                         } ?>
                         <small class="text-muted">
                             <?= $txtExemplaires . " " . $txtRayons ?>
-                            
                         </small>
                         <!-- Button trigger modal -->
                         <button type="button" href="#infoDVD_<?= $unDvd->getId() ?>" class="btn btn-primary"

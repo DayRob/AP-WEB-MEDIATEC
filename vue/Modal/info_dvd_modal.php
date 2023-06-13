@@ -46,8 +46,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary" id="reserverdvd" test="<?= $unDvd->getId() ?>"
-                    data-toggle="modal" data-target="#add_dvd<?= $unDvd->getId() ?>" data-whatever="">Reserver</button>
+                <button type="submit" class="btn btn-primary" name="reservation" data-toggle="modal">
+            Réserver
+        </button>
             </div>
         </div>
     </div>

@@ -14,12 +14,13 @@
                         </div>
 
                         <div class="card-body">
-                            <h4 class="card-title"><?= $uneReservation->getDocument()->getTitre() ?></h4>
+                            <h4 class="card-title">Titre : <?= $uneReservation->getDocument()->getTitre() ?></h4>
                             <hr>
                             <div class="row">
                                 <div class="col">
                                     <div class="card-text">
-                                        <span class="date mr-3"><?= $uneReservation->getDocumentReservation()->getLeNumero() ?></span>
+                                        <span class="date mr-3">numéro de l'exemplaire : <?= $uneReservation->getDocumentReservation()->getLeNumero() ?></span>
+                                        
                                     </div>
                                     <div class="card-text">
                                         

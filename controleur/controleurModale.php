@@ -16,15 +16,14 @@ if ($choixModale = "detailsLivre"){
 
     include "$racine/vue/Modal/info_livre_modal.php";
 
-
 }
-// if ($choixModale = "detailsReservationLivre"){
-//     $idL = $_GET["idLivre"];
-//     $idE = $_GET["idExemplaire"];
-//     $livreManager = new LivreManager();
-//     $unLivre = $livreManager->getLivreById($idL);
-//     $unExemplaire = $unLivre->getUnExemplaire($idE);
-
-
-//     include "$racine/vue/Modal/reserver_livre_modal.php";
-// }
+if ($choixModale = "detailsDvd"){
+        $idD = $_GET["idDvd"];
+    
+        $dvdManager = new DvdManager();
+        $unDvd = $dvdManager->getDvdById($idD);
+    
+    
+        include "$racine/vue/Modal/info_dvd_modal.php";
+    
+}

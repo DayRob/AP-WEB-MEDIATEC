@@ -56,4 +56,24 @@ class HistoriqueManager extends Manager
             die();
         }
     }
+
+    /**
+     * créer un enregistrement dans la table historique
+     *
+     * @param int $id
+     * @return void
+     */
+    public function supprimerRecherche($id): void
+    {
+        try {
+            $q = $this->getPDO()->prepare('DELETE FROM historique WHERE id=:id');
+
+            $q->bindParam(':id', $id, PDO::PARAM_STR);
+
+            $q->execute();
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+    }
 }

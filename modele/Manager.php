@@ -1,8 +1,8 @@
 <?php
 
-class Manager 
+class Manager
 {
-    
+
     /**
      * Etablit la connexion au serveur de base de données
      *
@@ -12,17 +12,14 @@ class Manager
     {
         $login = "root";
         $mdp = "";
-        $bd = "mediateq-web";
+        $bd = "mediateq-web1";
         $serveur = "localhost";
 
-        try
-        {
-            $conn = new PDO("mysql:host=$serveur;dbname=$bd", $login, $mdp, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'')); 
+        try {
+            $conn = new PDO("mysql:host=$serveur;dbname=$bd", $login, $mdp, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $conn;
-        } 
-        catch (PDOException $e) 
-        {
+        } catch (PDOException $e) {
             print "Erreur de connexion PDO ";
             die();
         }
@@ -33,7 +30,7 @@ class Manager
      *
      * @return void
      */
-    protected function getPDO() 
+    protected function getPDO()
     {
         static $pdo = null;
         if ($pdo == null) {
@@ -41,5 +38,4 @@ class Manager
         }
         return $pdo;
     }
-    
 }

@@ -205,7 +205,7 @@ if (isset($_POST['recherche'])) {
 
 
     $total = 1;
-    $libelle = $textTitre . "; " . $textAuteur . "; " . $textCollection . "; " . $textSujet . "; ";
+    $libelle = $textTitre . ", " . $textAuteur . ", " . $textCollection . ", " . $textSujet . ", ";
 
     $historiqueManager = new historiqueManager();
     $historiqueManager = $historiqueManager->creerHistorique($libelle, $total, $requete);
